@@ -1,0 +1,207 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="titleTextColor">@color/white</item>
+
+    </style>
+
+
+    <!-- New Theme to use in all new Screens-->
+    <style name="AppTheme.NoActionBar" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="DialogTheme" parent="AppTheme.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="RecyclerViewItemStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingLeft">8dp</item>
+        <item name="android:paddingRight">20dp</item>
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:paddingBottom">5dp</item>
+        <item name="android:popupBackground">#DFFFFFFF</item>
+    </style>
+
+    <!--style for ripple library-->
+    <!--<style name="RippleStyleWhite">
+        <item name="mrl_rippleOverlay">true</item>
+        <item name="mrl_rippleColor">#80FFFFFF</item>
+        <item name="mrl_rippleHover">true</item>
+        <item name="mrl_rippleAlpha">0.2</item>
+    </style>
+
+    <style name="RippleStyleBlack" parent="RippleStyleWhite">
+        <item name="mrl_rippleColor">#8096989A</item>
+    </style>
+
+    <style name="RippleStyleDark" parent="RippleStyleWhite">
+        <item name="mrl_rippleColor">#80000000</item>
+    </style>-->
+
+
+    <style name="Button.Primary" parent="@style/Widget.AppCompat.Button.Colored">
+        <item name="colorButtonNormal">@color/colorWhite</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+    </style>
+
+    <style name="Button.Accent" parent="@style/Widget.AppCompat.Button.Colored">
+        <item name="colorButtonNormal">@color/colorAccent</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="Button.Green" parent="@style/Widget.AppCompat.Button.Colored">
+        <item name="colorButtonNormal">@color/light_green_500</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="Button.White" parent="@style/Widget.AppCompat.Button.Colored">
+        <item name="colorButtonNormal">@android:color/white</item>
+        <item name="android:textColor">@color/grey_60</item>
+    </style>
+
+    <style name="Button.Primary.Borderless" parent="@style/Widget.AppCompat.Button.Borderless.Colored">
+        <item name="android:textColor">@color/colorPrimary</item>
+    </style>
+
+    <style name="Button.Accent.Borderless" parent="@style/Widget.AppCompat.Button.Borderless.Colored">
+        <item name="android:textColor">@color/colorAccent</item>
+    </style>
+
+    <style name="Button.Accent.Borderless.WhiteText" parent="@style/Widget.AppCompat.Button.Borderless.Colored">
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="Button.White.Primary" parent="@style/Widget.AppCompat.Button.Colored">
+        <item name="colorButtonNormal">@android:color/white</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+    </style>
+
+    <style name="Button.White.TextDark" parent="@style/Widget.AppCompat.Button.Colored">
+        <item name="colorButtonNormal">@android:color/white</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <style name="Button.White.Accent" parent="@style/Widget.AppCompat.Button.Colored">
+        <item name="colorButtonNormal">@android:color/white</item>
+        <item name="android:textColor">@color/colorAccent</item>
+    </style>
+
+    <style name="MyEditText" parent="Base.Widget.MaterialComponents.TextInputEditText">
+        <item name="android:textColor">#4c4c4e</item>
+        <item name="android:textColorHint">#4c4c4e</item>
+        <item name="android:backgroundTint">#4c4c4e</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:drawablePadding">10dp</item>
+    </style>
+
+    <style name="loginSignUp" parent="Widget.Design.TextInputLayout">
+        <!-- Hint color and label color in FALSE state -->
+        <item name="android:textColorHint">#4c4c4e</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:maxLines">1</item>
+        <!-- Label color in TRUE state and bar color FALSE and TRUE State -->
+        <item name="colorAccent">@color/white</item>
+        <item name="colorControlNormal">#4c4c4e</item>
+        <item name="colorControlActivated">@color/white</item>
+    </style>
+
+
+    <!--<style name="logo_image">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">120dp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_margin">10dp</item>
+        <item name="android:src"/>
+        <item name="android:scaleType">centerInside</item>
+    </style>-->
+    <style name="TextLabel" parent="Widget.Design.TextInputLayout">
+        <!-- Hint color and label color in FALSE state -->
+        <item name="android:textColorHint">@android:color/darker_gray</item>
+        <item name="android:textSize">20sp</item>
+        <!-- Label color in TRUE state and bar color FALSE and TRUE State -->
+        <item name="colorAccent">#DD5044</item>
+        <item name="colorControlNormal">@color/colorPrimary</item>
+        <item name="colorControlActivated">@color/colorPrimaryDark</item>
+    </style>
+
+
+    <style name="loginSignup" parent="Widget.Design.TextInputLayout">
+        <!-- Hint color and label color in FALSE state -->
+        <item name="android:textColorHint">@android:color/darker_gray</item>
+        <item name="android:textSize">20sp</item>
+        <!-- Label color in TRUE state and bar color FALSE and TRUE State -->
+        <item name="colorAccent">#DD5044</item>
+        <item name="colorControlNormal">@color/transparent_white</item>
+        <item name="colorControlActivated">@color/white</item>
+    </style>
+
+
+    <style name="my_dialog_theme">
+        <item name="android:windowBackground">@drawable/dialog_shadow</item>
+        <item name="android:windowAnimationStyle">@null</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <style name="MyEditText2" parent="Base.Widget.MaterialComponents.TextInputEditText">
+        <item name="android:maxLines">1</item>
+    </style>
+
+
+
+    <style name="Dialog.Theme" parent="Theme.AppCompat.Light.Dialog">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="btn1">
+        <item name="android:textSize">@dimen/_11sdp</item>
+        <item name="android:paddingTop">@dimen/_10sdp</item>
+        <item name="android:paddingBottom">@dimen/_10sdp</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:background">@drawable/button_skyblue</item>
+    </style>
+    <style name="btn2">
+        <item name="android:textSize">@dimen/_11sdp</item>
+        <item name="android:paddingTop">@dimen/_10sdp</item>
+        <item name="android:paddingBottom">@dimen/_10sdp</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:background">@drawable/button_orange_bg</item>
+    </style>
+    <style name="chbx1">
+        <item name="android:textSize">@dimen/_10sdp</item>
+        <item name="android:textColor">@color/colorLabel</item>
+    </style>
+
+
+    <style name="lblTitleLight">
+        <item name="android:textSize">@dimen/_12sdp</item>
+        <item name="android:textColor">@color/colorLabel</item>
+    </style>
+
+
+</resources>

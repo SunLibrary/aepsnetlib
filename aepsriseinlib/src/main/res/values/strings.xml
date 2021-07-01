@@ -1,1 +1,840 @@
-<resources></resources>
+<resources>
+    <!--<string name="app_name">NetPaisa Business</string>-->
+    <string name="font_name_light">Nexa_Light.otf</string>
+    <string name="font_name_bold">Nexa_Bold.otf</string>
+    <string name="title_activity_welcome">Home Screen</string>
+    <string name="next">NEXT</string>
+    <string name="start">GOT IT</string>
+    <string name="sign_up">Register</string>
+    <string name="register">Register</string>
+    <string name="DTH">DTH</string>
+    <string name="Gas">Gas</string>
+    <string name="Flight">Flight</string>
+    <string name="land_line">Land Line</string>
+    <string name="pay_terms">I agree that Bank/UIDAI may share my details with each other for the purpose of authenticating my Aadhaar Number</string>
+    <string name="hint_name">Full Name</string>
+    <string name="hint_email">Email ID</string>
+    <string name="recharge">Recharge &amp; Pay Bills</string>
+    <string name="hint_amount">Amount </string>
+    <string name="hint_really_exit">Really Exit </string>
+    <string name="hint_are_you_sure">Are you sure really want to exit </string>
+    <string name="hint_details">Enter Your Details </string>
+    <string name="hint_mobil">Mobile Number.</string>
+    <string name="hint_password">Password</string>
+    <string name="hint_confirm_password">Confirm Password</string>
+    <string name="Already_has_account_Login_here">Already have an account? Login here</string>
+    <string name="balance">Balance Enquiry</string>
+    <string name="slide_1_title">Hello PayU Mitra!</string>
+    <string name="slide_1_desc">The easiest way to recharge of all utility!</string>
+    <string name="planapi">View Plan</string>
+    <string name="slide_2_title">Movie Tickets</string>
+    <string name="slide_2_desc">Book movie tickets for your family and friends!</string>
+    <string name="recharge_plan"> Recharge Plan </string>
+    <string name="slide_3_title">Great Discounts</string>
+    <string name="slide_3_desc">Best discounts on every single service we offer!</string>\
+    <string name="slide_4_title">World Travel</string>
+    <string name="slide_4_desc">Book tickets of any transportation and travel the world!</string>
+    <string name="play_again_desc">To see the welcome slider again, goto Settings -> apps -> welcome slider -> clear data</string>
+    <string name="play_again">Play Again</string>
+    <string name="action_settings">Logout</string>
+    <string name="title_activity_login">Sign in</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password (optional)</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_master">MasterActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="title_activity_bottom_navigation">BottomNavigation</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_account">Account</string>
+    <string name="title_offer">Offer</string>
+    <string name="title_bank">Bank</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="recharge_validity">Recharge Validity</string>
+    <string name="recharge_talk">Recharge Talktime</string>
+    <string name="recharge_value">Recharge Value</string>
+    <string name="client_first">There is a well-known quote by "Mahatma Gandhi" that inspires and aids us in serving our clients, and it says ; "A client is the most critical guest on our premises. He is not dependent on us. We are dependent on him. He is not an interruption in our work. He is the reason for it. He is not one who has come from outside in our business. He is a part of it. We are not helping him out by serving him. He is helping us out by giving us a chance to do as such.</string>
+
+
+    <string name="view_dispute">View Dispute</string>
+    <string name="mobile">Mobile</string>
+    <string name="loan">Loan</string>
+    <string name="dth">DTH</string>
+
+    <string name="postpaid">Postpaid</string>
+    <string name="data_card">Data Card</string>
+    <string name="electricity">Electricity</string>
+    <string name="gas">Gas</string>
+    <string name="insurance">Insurance</string>
+    <string name="amount">Amount</string>
+    <string name="operator">Select Operator</string>
+    <string name="circle">Select Circle</string>
+    <string name="tr_id">Transaction Id</string>
+    <string name="recharge_type">Recharge Type</string>
+    <string name="operator_">Operator</string>
+    <string name="method">Method</string>
+    <string name="ope_ref">Ope Ref</string>
+    <string name="status">Status</string>
+    <string name="date">Date and Time</string>
+    <string name="account">Account</string>
+    <string name="reference_no">Reference No.</string>
+    <string name="req_date">Request Date</string>
+    <string name="message">Message</string>
+    <string name="action">Action</string>
+    <string name="ben_code">Beneficiary Code</string>
+    <string name="ben_name">Beneficiary Name</string>
+    <string name="ben_acc">Beneficiary Account</string>
+    <string name="mobile_wallet">Mobile/Wallet</string>
+    <string name="time">Time</string>
+    <string name="change_pwd">Change Password</string>
+    <string name="support_center">Support Center</string>
+    <string name="enter_c_pwd">Enter Current Password</string>
+    <string name="update">Update</string>
+    <string name="middle">Middle Name</string>
+    <string name="dob">Date Of Birth</string>
+    <string name="district">District</string>
+    <string name="confirm_pwd">Confirm Password</string>
+    <string name="new_pwd">New Password</string>
+    <string name="current_pin">Enter Current Pin</string>
+    <string name="new_pin">New Pin</string>
+    <string name="name">Name</string>
+
+
+    <string name="director_one">Name of director 1*</string>
+    <string name="director_two">Name of director 2*</string>
+    <string name="director_three">Name of director 3*</string>
+    <string name="company">Company</string>
+    <string name="user_name">User Name</string>
+    <string name="email">Email</string>
+    <string name="mobile_">Mobile</string>
+    <string name="address">Address</string>
+    <string name="pin">Pin Code</string>
+    <string name="Dispute_dtl">Dispute Details</string>
+    <string name="dis_cre_date">Dispute Date : </string>
+    <string name="dispute_id">Dispute Id :</string>
+    <string name="cancel">Cancel</string>
+    <string name="enter_tr_id">Enter Transaction Id</string>
+    <string name="enter_msg">Please enter message</string>
+    <string name="firm_name">Firm Name :</string>
+    <string name="ifsc_code_finder">Ifsc Code Finder</string>
+    <string name="bank_name">Bank Name</string>
+    <string name="branch_name_city">Branch Name/City</string>
+    <string name="search">Search</string>
+    <string name="bank_list">Bank List</string>
+    <string name="ifsc_code">IFSC</string>
+    <string name="service">Type of Services *</string>
+    <string name="nyc">NYC code *</string>
+    <string name="atm_balance">MATM Wallet</string>
+    <string name="persons_employe">Persons employed *</string>
+    <string name="investment_employe">Investment *</string>
+    <string name="dist_employe">District industry centre *</string>
+    <string name="company_employe">company located in which district *</string>
+    <string name="rural_employe">Specify Urban or Rural area *</string>
+    <string name="buisness_employe">Nature of the business details *</string>
+
+
+    <string name="branch_name">Branch Name</string>
+    <string name="state">State</string>
+    <string name="bill_summary">Billing Summary</string>
+    <string name="user">User</string>
+    <string name="user_type">User Type :</string>
+    <string name="tr_type">Transaction Type</string>
+    <string name="paid_amount">Paid Amount</string>
+    <string name="enter_amount">Enter Amount</string>
+    <string name="enter_acc_name">Enter Account Name</string>
+    <string name="enter_acc_number">Enter Account Number</string>
+    <string name="enter_message">Enter Message</string>
+    <string name="login">SignIn</string>
+    <string name="signin">LOGIN</string>
+
+    <string name="cust_mob_num">Customer Mobile Number</string>
+    <string name="submit">Submit</string>
+    <string name="last_name">Last Name</string>
+    <string name="first_name">First Name</string>
+    <string name="pin_code">Pin Code</string>
+    <string name="enter_opt">Enter otp</string>
+    <string name="ben_list">Beneficiary List</string>
+    <string name="ben_add">Add Beneficiary</string>
+    <string name="history">History</string>
+    <string name="enter_ifsc">Enter IFSC Code</string>
+    <string name="exit">Exit</string>
+    <string name="remaining_limit">Remaining Limit : </string>
+    <string name="nick_name">Nick Name</string>
+    <string name="beneficiary_code">Beneficiary Code</string>
+    <string name="acc_num">Account Number</string>
+    <string name="branch">Bank Name &amp; Branch *</string>
+    <string name="withdrawal_type">Withdrawal Type</string>
+    <string name="type">Type</string>
+    <string name="pan">Pan Number</string>
+    <string name="category">Social category (Community- General/SC/ST/OBC) *</string>
+    <string name="postalcompany">Full Postal Address For Company *</string>
+    <string name="personal_add">Full Postal Address Personal *</string>
+    <string name="constitution">Type of the constitution *</string>
+    <string name="comencement">  Date of Commencement *</string>
+    <string name="partnership">  Partnership deed Date *</string>
+
+
+    <string name="bank_detail">  Bank Details of the company of Personal *</string>
+    <string name="district_company">District*</string>
+    <string name="company_name">Company Name</string>
+    <string name="delete">Delete</string>
+    <string name="agent_tr_id">Agent Transaction Id</string>
+    <string name="mr_tr_id">Mr Transaction Id</string>
+    <string name="top_tr_id">Top Transaction Id</string>
+    <string name="ben_his">Beneficiary History</string>
+    <string name="enter_pin">Enter PIN</string>
+    <string name="enter_dispute">Write Your Dispute</string>
+    <string name="debit">Debit/Credit</string>
+    <string name="trs">Transactions</string>
+    <string name="payment_rq">Payment Request</string>
+    <string name="today_ern">Today Earning</string>
+    <string name="enter_comments">Enter Comments</string>
+    <string name="transfer">Transfer</string>
+    <string name="payment_details">Payment Details</string>
+    <string name="rej">Reject</string>
+    <string name="enter_bill_unit">Enter Bill Unit</string>
+    <string name="enter_process_unit">Enter Process Unit</string>
+    <string name="cycle">Cycle</string>
+    <string name="not_avail">Not Available</string>
+    <string name="reinitialise_transaction">Reinitialise Transaction</string>
+    <string name="surcharge">Surcharge</string>
+    <string name="ur_cost">Your Cost</string>
+    <string name="powered_by">Powered By</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+
+    <string name="gdpr_login_privacy_policy">
+        By logging in, you agree to our <a href="https://apnachirag.com/privacy_policy.php">Terms &amp; Conditions </a>&amp; <a href="https://apnachirag.com/privacy_policy.php">Privacy Policy</a>
+    </string>
+
+    <string name="hint_fund_receive">Fund\nReceive</string>
+    <string name="hint_india_to_nepal">India\nTo Nepal</string>
+    <string name="hint_send_receive_fund">Send\nReceive Fund</string>
+    <string name="hint_passbook">Passbook</string>
+    <string name="hint_add_money">Add Money</string>
+    <string name="hint_add_retailer">Add Retailer</string>
+
+    <string name="hint_travel">Tour &amp; Travel</string>
+    <string name="hint_e_services">eServices Booking</string>
+    <string name="hint_hotel_b">Hotel Booking</string>
+    <string name="hint_product">Shopping</string>
+    <string name="hint_jewellery">jewellery</string>
+    <!-- // Money\nTransfer One  Money\nTransfer Two-->
+    <string name="hint_money_transfer_one">Money\nTransfer</string>
+    <string name="hint_money_transfer_two">DMT Two</string>
+
+    <string name="your_login_text">By login in,you agree to our <u>Terms &amp; Conditions</u> &amp; <u> Privacy Policy </u>.</string>
+
+
+    <string name="hint_mobile">Mobile Prepaid</string>
+    <string name="hint_mob_instant">Mobile Postpaid</string>
+    <string name="hint_dth">DTH</string>
+    <string name="hint_data_card">DataCard</string>
+    <string name="hint_land_line">Landline</string>
+    <string name="hint_broadband">Broadband</string>
+    <string name="hint_electricity">Electricity</string>
+    <string name="hint_gas">Gas</string>
+    <string name="hint_insurance">Insurance</string>
+    <string name="hint_jio">Jio Booking</string>
+    <string name="hint_aeps_icici">ICICI Bank</string>
+    <string name="hint_aeps_instaa">Aeps</string>
+    <string name="hint_aeps_insta_1">Aeps One</string>
+    <string name="hint_aeps_Bankit_2">Aeps Two</string>
+
+    <string name="hint_aeps_yes">YES Bank</string>
+    <string name="hint_aeps_fino">Fino Bank</string>
+    <string name="hint_package">Set\nPackage</string>
+    <string name="hint_pan_card">Pan Card</string>
+    <string name="hint_bus_booking">Bus</string>
+    <string name="hint_dth_connection">DTH Connection</string>
+
+    <string name="hint_water">Water</string>
+    <string name="instant">Instant</string>
+    <string name="hint_flight">Flight</string>
+    <string name="hint_train">Train</string>
+    <string name="hint_hotel">Hotel</string>
+    <string name="hint_lender">Lender</string>
+
+
+    <string name="hint_search_flight">Search Flight</string>
+    <string name="hint_recharge">Recharge</string>
+    <string name="hint_paid">Paid</string>
+    <string name="hint_received">Received</string>
+    <string name="hint_added">Added</string>
+    <string name="title_activity_dashboard_money_transfer">DashboardMoneyTransferActivity</string>
+    <string name="title_activity_flight_details">FlightDetailsActivity</string>
+    <string name="primary">(Primary)</string>
+
+
+    <string name="user_title">Title</string>
+    <string name="sender_name">Sender Name</string>
+    <string name="sender_dob">Sender DOB</string>
+    <string name="sender_address">Sender Address</string>
+    <string name="sender_pin_code">Sender Pin Code</string>
+    <string name="sender_mobile">Sender Mobile</string>
+    <string name="sender_doc_type">Document Type</string>
+    <string name="sender_doc_no">Document No.</string>
+    <string name="receiver_name">Receiver Name</string>
+    <string name="receiver_address">Receiver Address</string>
+    <string name="receiver_payment_mode">Select Payment Mode</string>
+    <string name="receiver_account_no">Account No</string>
+    <string name="receiver_bank_branch">Please Select a Bank Branch</string>
+    <string name="receiver_transfer_amount">Transfer Amount</string>
+    <string name="title_activity_retailer_master">Retailer Dashboard</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="hint_pay">Pay</string>
+    <string name="hint_prepaid_card">perpaid card</string>
+    <string name="surname">Surname</string>
+
+    <string name="namedmt">Name</string>
+
+    <string name="add_dmt">Address</string>
+
+    <string name="full_name">Full Name</string>
+    <string name="mobile_number">Mobile Number</string>
+    <string name="owner_name">Owner Name</string>
+    <string name="email_id">Email ID</string>
+    <string name="create_password">Create Password</string>
+    <string name="city">City</string>
+    <string name="adhar">Aadhar Card</string>
+    <string name="school">School / College / LIC / Insurance etc Receipt (PDF combined file)</string>
+    <string name="shop_address">Shop Address</string>
+    <string name="pan_number">PAN Number</string>
+    <string name="gst_number">GST Number</string>
+
+    <string name="pan_file">PAN File</string>
+    <string name="aadhaar_file">Aadhaar File</string>
+    <string name="gst_file">GST File</string>
+    <string name="chk_recharge">Recharge</string>
+    <string name="chk_money_transfer">Money Transfer</string>
+    <string name="bill_payment">Bill Payment</string>
+    <!-- <string name="login_to_sgm_money">Login to SGM Money</string>-->
+    <string name="create_a_new_account">Create a New Account</string>
+    <string name="shop_name">Shop Name</string>
+    <string name="skip">SKIP</string>
+    <string name="got_it">GOT IT</string>
+    <string name="dummy_text">Dummy Text</string>
+    <string name="wizard_one_desc">Explore more or login to use app now.</string>
+    <string name="welcome">Welcome to SGM Money!</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="upload_pan">Upload Pan Card</string>
+    <string name="select_file">Select File</string>
+    <string name="upload_gst_file">Upload GST File</string>
+    <string name="add_retailer">Add Retailer</string>
+    <string name="select_service">Select Service</string>
+    <string name="create_account">Create Account</string>
+    <string name="mobile_or_email">Mobile/Email</string>
+    <string name="forgot_pin">Forgot Pin ?</string>
+    <string name="forgot_password">Forgot Password ?</string>
+    <string name="enter_mobile_no">Enter Mobile No</string>
+    <string name="get_otp">Get OTP</string>
+    <string name="enter_otp">Enter OTP</string>
+    <string name="ok">OK</string>
+    <string name="we_have_sent_otp_on_your_mobile">We have sent OTP on your mobile</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="change_password_pin">Change Password and Pin</string>
+    <string name="enter_new_password">Enter New Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="reset">Reset</string>
+    <string name="reset_pin">Reset Pin</string>
+    <string name="upload_aadhaar_card">Upload Aadhaar Card</string>
+    <string name="upload_pan_card">Upload Pan Card</string>
+    <string name="confirm_pin">Confirm Pin</string>
+    <string name="customer_number">Customer Number</string>
+    <string name="k_number">K-Number</string>
+    <string name="epic_number">Voter ID/Epic No</string>
+    <string name="proceed_to_pay">Proceed to Pay</string>
+    <string name="title">Title</string>
+    <string name="please_proceed_to_make_payment">Please Proceed to Make Payment</string>
+    <string name="confirm">Confirm</string>
+    <string name="customer_name">Customer Name</string>
+    <string name="bill_number">Bill Number</string>
+    <string name="bill_date">Bill Date</string>
+    <string name="bill_due_date">Bill Due Date</string>
+    <string name="due_amount">Due Amount</string>
+    <string name="customer">Customer</string>
+    <string name="reference_id">Reference Id</string>
+    <string name="enter_your_registered_number">Enter Your Registered Number</string>
+    <string name="doexit">Do you want to exit ?</string>
+    <string name="todo">ToDo</string>
+    <string name="bill_period">Bill Period</string>
+    <string name="user_id">Please Enter User Code</string>
+    <string name="or">OR</string>
+    <string name="resend">Resend</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="log_out">Log Out</string>
+    <string name="lbl_nav_about_us">About Us</string>
+    <string name="my_dispute">Raise Dispute</string>
+    <string name="_200_00">200.00</string>
+    <string name="u20b9">₹</string>
+    <string name="commission">MATM History</string>
+    <string name="transaction">Transaction</string>
+    <string name="recharge_history">Recharge History</string>
+    <string name="you_have_no_record_to_show_here">You have no record to show here.</string>
+    <string name="aeps_services">Services</string>
+    <string name="dmt">Money Transfer</string>
+    <string name="close">Close</string>
+    <!--    <string name="available_nsgmmoney_wallet">Available SGM Money Wallet</string>-->
+    <string name="_0_00">0.00</string>
+    <string name="money_transfer_wallet_login">Money Transfer Wallet Login</string>
+    <string name="ifsc">IFSC</string>
+    <string name="please_select_bank">Please Select Bank</string>
+    <string name="beneficiary_mobile_number">Beneficiary Mobile Number</string>
+    <string name="find_ifsc">Find IFSC</string>
+    <string name="verify">Verify</string>
+    <string name="holder_name">Holder Name</string>
+    <string name="transfer_limit">Transfer Limit:</string>
+    <string name="remaining_amount">Remaining Amount :</string>
+    <string name="wallet_amount">Wallet Amount :</string>
+    <string name="_25000_per_month">25000 PER MONTH</string>
+    <string name="phone">Phone</string>
+    <string name="ifsc_small">Ifsc</string>
+    <string name="imps">Imps</string>
+    <string name="neft">NEFT</string>
+    <string name="remit">REMIT</string>
+    <string name="sp_double_dot">:</string>
+    <string name="money_transfer">Money Transfer</string>
+    <string name="deducted">Deducted</string>
+    <string name="status_dot">Status:</string>
+    <string name="download_details_in_pdf_dot">Download Details in PDF:</string>
+    <string name="dispute">Get Status</string>
+    <string name="live_id">Agent Transaction Id</string>
+    <string name="txn_id">Txn Id</string>
+    <string name="date_s">Date</string>
+    <string name="raise_dispute">Raise Dispute</string>
+    <string name="correct_a_c_number">Correct A/C Number</string>
+    <string name="correct_ifsc_code">Correct IFSC Code</string>
+    <string name="upload">Upload</string>
+    <string name="upload_self_attested_aadhaar_copy">Upload self-attested Aadhaar copy.</string>
+    <string name="upload_passbook_of_beneficiary_bank_account">Upload passbook of beneficiary bank account.</string>
+    <string name="transaction_id">Transaction Id</string>
+    <string name="comment">Comment</string>
+    <string name="select_date">Select Date</string>
+    <string name="reference_number">Reference Number</string>
+    <string name="submit_payment_request">Submit Payment Request</string>
+    <string name="receipt_image">Receipt Image</string>
+    <string name="browse">Browse</string>
+    <string name="icici_bank_account_details">ICICI Bank Acount Details</string>
+    <string name="sbi_bank_account_details">SBI Bank Account Details</string>
+    <string name="home">Home</string>
+    <string name="passbook">Passbook</string>
+    <string name="aeps">AEPS</string>
+    <string name="wallet">Wallet</string>
+    <string name="settings">Settings</string>
+    <string name="help_amp_feedback"><![CDATA[Help & Feedback]]></string>
+    <string name="payment_request">Payment Request</string>
+    <string name="my_commission">My Commission</string>
+    <string name="support">Support</string>
+    <string name="add_money">Add Money</string>
+    <string name="sgmmoney_wallet">SGM Money Wallet</string>
+    <string name="recharge_amp_bill_payments"><![CDATA[Recharge & Bill Payments]]></string>
+    <string name="mosambee_atm">QPOS</string>
+    <string name="finance_service"><![CDATA[Finance Services]]></string>
+    <string name="personal_loan"> Person &amp; Home Loans </string>
+    <string name="insurance_health"> Health &amp; Vehicle Insurance </string>
+    <string name="bank_acc">Open Bank A/c</string>
+    <string name="prepaid_card">Prepaid Card</string>
+    <string name="sip">SIP</string>
+    <string name="lic">LIC</string>
+    <string name="fd">Fixed Deposit</string>
+
+
+    <string name="shopping_service"><![CDATA[Launching Soon]]></string>
+    <string name="voter_id"> Voter \n IDCard</string>
+    <string name="voter"> VoterID Card</string>
+    <string name="courier">Courier</string>
+    <string name="eshopping"> CDL </string>
+    <string name="gift_card"> Gift Card</string>
+
+
+    <string name="kyc_service"><![CDATA[Other Services ]]></string>
+    <string name="new_company_reg"> New Company \n Registration </string>
+    <string name="gst_reg"> GST </string>
+    <string name="trademark_reg">Trademark \n Registration</string>
+    <string name="food_license">Food \n License</string>
+    <string name="firm_reg"> Firm \n Registration </string>
+    <string name="income_return"> Income Tax \n return </string>
+    <string name="income"> Income Tax </string>
+    <string name="fast_tg"> FASTag</string>
+    <string name="gps_device"> GPS Device </string>
+    <string name="csp_reg"> CSP/BC \n Registration </string>
+    <string name="pan_card"> PAN Card </string>
+    <string name="udhyog_dow">Udhyog Adhar </string>
+    <string name="adhar_down">Download Aadhar Card </string>
+    <string name="trade_name">TradeMark BrandName </string>
+    <string name="education">Education</string>
+    <string name="prepaid">Prepaid</string>
+    <string name="_91">+91</string>
+    <string name="select_operator">Select Operator</string>
+    <string name="proceed_to_recharge">Proceed</string>
+    <string name="recommended">Recommended</string>
+    <string name="aeps_account_login">AEPS Account Login</string>
+    <string name="add_account">Add Account</string>
+    <string name="account_details">Account Details</string>
+    <string name="txn_id_aeps">TXN ID :</string>
+    <string name="withdrawal_status">Withdrawal Status</string>
+    <string name="withdrawal_amount">Withdrawal Amount</string>
+    <string name="closing_balance">Closing Balance</string>
+    <string name="technical_support_details">Technical Support Details:-</string>
+    <string name="sales_support_details">SALES SUPPORT Details:-</string>
+    <string name="_9136262728">9136262728</string>
+    <string name="sachin_tyagi">Sachin Tyagi</string>
+    <string name="_9560327349">9560327349</string>
+    <string name="rinki_singh">Rinki Singh</string>
+    <string name="credit_dot">Credit : </string>
+    <string name="transaction_details">Transaction Details</string>
+    <string name="agent_txn_id">Agent Txn Id</string>
+    <string name="withdrawal_this_amount">Withdrawal</string>
+    <string name="select_all">Select All</string>
+    <string name="withdrawal">Aeps\nSettlement</string>
+    <string name="aeps_settlement">Aeps\nSettlement</string>
+    <string name="slash">/-</string>
+    <string name="opening_balance">Opening Balance</string>
+    <string name="error">Error</string>
+    <string name="error_3">Error !!!</string>
+    <string name="ooops_you_have_no_record_to_show_here">You have no record to show here.</string>
+    <string name="tap_to_retry">Tap to retry</string>
+    <string name="no_connection">No connection !!!</string>
+    <string name="select_language">Select Language</string>
+    <string name="english_us">English, US</string>
+    <string name="real_time_mode">Real Time Mode</string>
+    <string name="receive_realtime_update_about_service_changes">Receive realtime update about service changes.</string>
+    <string name="notification_sound">Notification Sound</string>
+    <string name="if_disabled_no_sound_will_be_for_notification_only_vibiration">If disabled no sound will be for notification, only vibration.</string>
+    <string name="push_notifications">Push Notifications</string>
+    <string name="commission_changes">Commission Changes</string>
+    <string name="commission_i">Commission</string>
+    <string name="service_changes">Service Changes</string>
+    <string name="reminders">Reminders</string>
+    <string name="other">Other</string>
+    <string name="more">More</string>
+    <string name="ask_a_question">Ask a Question</string>
+    <string name="f_a_q">F A Q</string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="terms_amp_conditions"><![CDATA[Terms & Conditions]]></string>
+    <string name="my_wallet">My Wallet</string>
+    <string name="refer_amp_earn"><![CDATA[Refer & Earn]]></string>
+    <string name="other_setting">OTHER SETTING</string>
+    <string name="general_setting">GENERAL SETTING</string>
+    <string name="general">GENERAL</string>
+    <string name="personal_details">Personal Details</string>
+    <string name="aeps_balance">AEPS Wallet</string>
+    <string name="change_pin">Change Pin</string>
+    <string name="change_master_pin">Change Master Pin</string>
+    <string name="change_password">Change Password</string>
+    <string name="enter_current_pin">Enter Current Pin</string>
+    <string name="enter_new_pin">Enter New Pin</string>
+    <string name="confirm_new_pin">Confirm New Pin</string>
+    <string name="enter_current_password">Enter Current Password</string>
+    <string name="enter_password">Enter Password</string>
+    <string name="confirm_new_password">Confirm New Password</string>
+    <string name="fund_request">Fund Request</string>
+    <string name="fund_request_status">Fund Request Status</string>
+    <string name="select_payment_mode">Select Payment Mode</string>
+    <string name="registered_phone_number">Registered Mobile</string>
+    <string name="requested_amount">Requested Amount</string>
+    <string name="_1_00_0_00_1">1.00.0.00.1</string>
+    <string name="version">Version</string>
+    <string name="last_update">Last Update</string>
+    <string name="website">Website</string>
+    <string name="book_jio_phone">Book Jio Phone</string>
+    <string name="i_accept_term_amp_conditions"><![CDATA[I accept term & conditions]]></string>
+    <string name="pay_500">PAY ₹ 500</string>
+    <string name="credit">Credit</string>
+    <string name="select_retailer">Select Retailer</string>
+    <string name="create_new_account">Create New Account</string>
+    <string name="wallet_balance">Main Wallet</string>
+    <string name="update_profile">Update Profile</string>
+    <string name="customer_id">Customer Id</string>
+    <string name="no_contact_info">No Contact Info.</string>
+    <string name="support_email_id">XXXXXXXXX@gmail.com</string>
+    <string name="email_id_support">Email Id</string>
+    <string name="_7903959099">+91-XXXXXXXXXX</string>
+    <string name="support_mobile">+91-XXXXXXXXXX</string>
+
+    <string name="support_info">Support Info</string>
+    <string name="attach_n_signature">Attach Signature</string>
+    <string name="get_transaction_n_detail">Get Transaction \n  Details</string>
+    <string name="check_n_incomplete_txn">Check Incomplete Txn</string>
+    <string name="void_transaction">Void \n Transaction</string>
+    <string name="search_n_transaction">search Transaction</string>
+    <string name="card_transaction_sale"> Card transaction</string>
+    <string name="prepare_device">Prepare \n device </string>
+    <string name="update_service">Update Service</string>
+    <string name="close_device">Close Device</string>
+    <string name="hint_mpos">Mpos</string>
+    <string name="bank_code">Bank Code</string>
+    <string name="new_txn">New Txn</string>
+    <string name="transaction_check">Transaction Check</string>
+    <string name="enter_reference_id">Enter Reference Id</string>
+    <string name="signature_image">Signature Image</string>
+    <string name="cashback_amount">Cashback Amount</string>
+    <string name="apply_for_loan">Apply For Loan</string>
+    <string name="customer_email">Customer Email</string>
+    <string name="cheque_number">Cheque Number</string>
+    <string name="income_per_month">Income Per month in Rs.</string>
+    <string name="cheque_date">Cheque Date</string>
+    <string name="name_of_business">Name of Buisness</string>
+    <string name="registration_year_of_business">Registration Year of Buisness</string>
+    <string name="business_vintage">Buisness Vintage</string>
+    <string name="land_size">Land Size (sqft) </string>
+    <string name="purchased_property_cost">Purchased Property cost in Rs. </string>
+    <string name="property_address">Property address</string>
+    <string name="loan_amount">Loan Amount in Rs. </string>
+    <string name="residence_address">Residance Address</string>
+    <string name="pan_card_image">Pan Card Image</string>
+    <string name="aadhaar_card_image">Aadhar card image</string>
+    <string name="itr_latest"> ITR Latest</string>
+    <string name="bank_statement">Bank Statement</string>
+    <string name="property_site_map">Property Site </string>
+    <string name="occupation">Occupation</string>
+    <string name="age">Age</string>
+    <string name="duration">Duration</string>
+    <string name="nominee_name">Nominee Name</string>
+    <string name="nominee_relation">Nominee Relation</string>
+    <string name="HIDE">HIDE</string>
+    <string name="join_now">Join Now</string>
+    <string name="fixed_deposit">Fixed\nDeposit</string>
+    <string name="lbl_q_num_1">Q1.</string>
+    <string name="lbl_q_num_2">Q2.</string>
+    <string name="lbl_q_num_3">Q3.</string>
+    <string name="lbl_q_num_4">Q4.</string>
+    <string name="lbl_q_num_5">Q5.</string>
+    <string name="lbl_q_num_6">Q6.</string>
+    <string name="lbl_q_num_7">Q7.</string>
+    <string name="lbl_q_num_8">Q8.</string>
+    <string name="lbl_q_num_9">Q9.</string>
+    <string name="lbl_fd_q_1">How I can apply?</string>
+    <string name="lbl_fd_q_2">What are the schemes of deposits available?</string>
+    <string name="lbl_fd_q_3">What is the minimum deposit amount and tenure?</string>
+    <string name="lbl_fd_q_4">Can a joint account be maintained?</string>
+    <string name="lbl_fd_q_5">Can a company invest in FD?</string>
+    <string name="lbl_fd_q_6">Can a withdrawal be made from deposit in an emergency?</string>
+    <string name="lbl_fd_a_1">SGet the physical form from nearby store or download the form from NetPaisa site. Fill the complete form and attach attested documents like – aadhar card, pan card, photo, cheque. Send directly to us or nearby store.</string>
+    <string name="lbl_fd_a_2">1. Cumulative-Interest is compounded annually.Interest earned get at time of maturity.\n\n2. Non-Cumulative- you received the interest monthly, quarterly, half-yearly, yearly basis dependent on your preference.</string>
+    <string name="lbl_fd_a_3">Minimum deposit amount is 10 k and tenure is 7 days to 5 years.</string>
+    <string name="lbl_fd_a_4">Yes a joint account can be maintained.</string>
+    <string name="lbl_fd_a_5">Yes a company can invest in FD but procedure will be different.</string>
+    >
+    <string name="new_transaction">New Transaction</string>
+    <string name="check_balance">Check Balance</string>
+    <string name="searching_device_5_dot">Searching Device...</string>
+    <string name="success">Success</string>
+    <string name="no_device_found_to_connect">No Device Found to Connect.</string>
+    <string name="no_device_connected">No Device Connected.</string>
+    <string name="finance">Finance</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+
+    <string-array name="array_name">
+        <item>Select Vehicle</item>
+        <item>Car</item>
+        <item>Truck</item>
+        <item>Bus</item>
+        <item>Other</item>
+    </string-array>
+    <string-array name="state_name">
+        <item>Select State</item>
+        <item>Delhi</item>
+        <item>Uttrakhand</item>
+        <item>UttarPradesh</item>
+        <item>Other</item>
+    </string-array>
+    <string-array name="array_marital">
+        <item>Select Marital Status</item>
+        <item>Single</item>
+        <item>Married</item>
+        <item>widow</item>
+    </string-array>
+    <string-array name="array_gender">
+        <item>Select Gender</item>
+        <item>Male</item>
+        <item>Female</item>
+        <item>Other</item>
+    </string-array>
+    <string-array name="array_social">
+        <item>Select Social Status</item>
+        <item>GEN</item>
+        <item>SC</item>
+        <item>ST</item>
+        <item>OBC</item>
+        <item>Other</item>
+    </string-array>
+    <string-array name="bank_name">
+        <item>Select Bank</item>
+        <item>CSP</item>
+        <item>Bank BC</item>
+        <item>Bank Mitra</item>
+    </string-array>
+    <string-array name="nature_buisness">
+        <item>Select Buisness</item>
+        <item>Services</item>
+        <item>Manufaturing</item>
+        <item>Retail</item>
+        <item>WholeSale</item>
+    </string-array>
+    <string-array name="constitution">
+        <item>Select Status</item>
+        <item>Proprietor</item>
+        <item>Private</item>
+        <item>LLP</item>
+        <item>Partner</item>
+    </string-array>
+    <string-array name="services">
+        <item>Select Services</item>
+        <item>Manufacturing</item>
+        <item>Services</item>
+    </string-array>
+    <string-array name="account_type">
+        <item>Select account</item>
+        <item>Current</item>
+        <item>Saving</item>
+    </string-array>
+    <string-array name="state">
+        <item>Select state</item>
+        <item>Andhra Pradesh</item>
+        <item>Arunachal Pradesh</item>
+        <item>Assam</item>
+        <item>Bihar</item>
+        <item>Chhattisgarh</item>
+        <item>Goa</item>
+        <item>Gujarat</item>
+        <item>Haryana</item>
+        <item>Himachal Pradesh</item>
+        <item>Jharkhand</item>
+        <item>Karnataka</item>
+        <item>Kerala</item>
+        <item>Madhya Pradesh</item>
+        <item>Maharashtra</item>
+        <item>Manipur</item>
+        <item>Meghalaya</item>
+        <item>Mizoram</item>
+        <item>Nagaland</item>
+        <item>Odisha</item>
+        <item>Punjab</item>
+        <item>Rajasthan</item>
+        <item>Sikkim</item>
+        <item>Tamil Nadu</item>
+        <item>Telangana</item>
+        <item>Tripura</item>
+        <item>Uttar Pradesh</item>
+        <item>Uttarakhand</item>
+        <item>West Bengal</item>
+    </string-array>
+    <string name="stop_caps">STOP</string>
+    <string name="refresh_caps">REFRESH</string>
+    <string name="selected_device">"Selected Device"</string>
+    <string name="rrn">RRN</string>
+    <string name="mini_atm">Mini ATM</string>
+    <string name="micro_atm">Micro ATM</string>
+    <string name="u_cube">UCube</string>
+    <string name="payout">Payout</string>
+    <string name="card_number">Card Number</string>
+    <string name="agent_trans_id">Agent Trans ID</string>
+    <string name="username">Username</string>
+    <string name="batchno">BatchNo</string>
+    <string name="invoicenumber">InvoiceNumber</string>
+    <string name="hitachirescode">HitachiResCode</string>
+    <string name="respcode">RespCode</string>
+    <string name="transaction_date">Transaction Date</string>
+    <string name="txn_type_date">Transaction Type</string>
+    <string name="remark">Remark</string>
+    <string name="sharing_text">Your sharing text goes here…</string>
+    <string name="share_title">Share Screenshot</string>
+    <string name="cashback">CashBack</string>
+    <string name="share">Share</string>
+    <string name="settlement_status">Settlement Status</string>
+    <string name="settlement_date">Settlement Date</string>
+    <string name="device_type">Device Type</string>
+    <string name="update_app">New Version Available, UPDATE NOW!.</string>
+    <string name="choose_transaction_type">Choose Transaction Type::</string>
+    <string name="qpos_remark">*Make Sure QPOS Device is open and Paired with Mobile!</string>
+    <string name="amountM">Enter Amount * (Multiple of 100)</string>
+    <string name="amountM50">Enter Amount * (Multiple of 50 and Greater then 100)</string>
+    <string name="hint_qpos">Qpos\nSettlement</string>
+    <string name="hint_matm_qpos_settle">MATM\nSettlement</string>
+    <string name="hint_aeps_insta">AEPS Services</string>
+    <string name="select_user_type"> Select User Type</string>
+    <string-array name="navigation_drawer_items_array">
+        <item>Connect</item>
+        <item>Fixtures</item>
+        <item>Table</item>
+
+    </string-array>
+
+
+    <!--New Finger-->
+
+    <string-array name="arrayFingerCount">
+        <item>1</item>
+        <item>2 </item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+    </string-array>
+
+    <string-array name="arrayFingerType">
+        <item>FMR</item>
+        <item>FIR</item>
+    </string-array>
+
+    <string-array name="arrayFingerFormat">
+        <item>XML</item>
+        <item>PROTOBUF</item>
+    </string-array>
+
+    <string-array name="arrayEnv">
+        <item>P</item>
+        <item>S</item>
+        <item>PP</item>
+    </string-array>
+
+    <string name="balance_enquiry">Balance Enquiry</string>
+    <string name="capturing_successful">Biometric Successfully Captured , Please press submit button</string>
+    <string name="cash_withdraw">Cash Withdrawal</string>
+    <string name="choose_biometric_device">Choose Biometric device</string>
+    <string name="customer_clause">* Customer Consent Clause </string>
+    <string name="hint_aadhaar_history">History</string>
+    <string name="capture">Capture</string>
+
+    <string name="enter_adhaar_number">Enter 12 Digit Aadhaar Number</string>
+
+    <string name="enter_mobile_number">Enter 10 Digit Mobile Number</string>
+    <string name="install_app_mantra">Please install Mantra RD service for using Aeps service</string>
+    <string name="install_app_morpho">Please install Morpho RD service for using Aeps service</string>
+    <string name="install_app_startek">Please install Startek RD service for using Aeps service</string>
+
+    <string name="select_bank_name">Please Select Bank Name</string>
+    <string name="enter_bank_name">Enter Bank Name</string>
+    <string name="aadhaar_payout">Aadhaar Payout</string>
+    <string name="choose_transfer_mode">Choose Transfer Mode:</string>
+    <string name="select_settlement_mode">Select Settlement Mode</string>
+    <string name="aadhaar_number">Aadhaar Number</string>
+    <string name="hint_aadhaarpay">Aadhaar Pay</string>
+    <string name="hint_aadhaar_settlement">Aadhaar\nSettlement</string>
+    <string name="hint_aadhaar_trans_report">Aadhaar\nReport</string>
+    <string name="hint_aadhaar_settle_report">Settlement\nReport</string>
+    <string name="hint_paytm_transaction">Transaction\nReport</string>
+    <string name="enter_aadhaar_number">Enter Aadhaar Number</string>
+    <string name="aadhar_balance">Aadhaar Wallet</string>
+
+    <string name="select_tans_type">Please Select Transaction Type</string>
+</resources>

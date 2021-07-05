@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/_5sdp"
+    android:paddingBottom="@dimen/_3sdp"
+    android:paddingTop="@dimen/_3sdp"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="4dp">
+
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:layout_marginTop="@dimen/_5sdp"
+    android:layout_marginBottom="@dimen/_5sdp"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/idAepsDateTxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/_5sdp"
+        android:paddingBottom="@dimen/_5sdp"
+        android:gravity="center"
+        android:maxLines="3"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:visibility="visible"
+         />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/_3sdp"
+        android:background="@color/gray" />
+
+    <TextView
+        android:id="@+id/idAepsTxnTypeTxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/_5sdp"
+        android:paddingBottom="@dimen/_5sdp"
+        android:gravity="center"
+        android:maxLines="3"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:visibility="visible"
+        />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/_3sdp"
+        android:background="@color/gray" />
+
+    <TextView
+        android:id="@+id/idAepsAmountTxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/_5sdp"
+        android:paddingBottom="@dimen/_5sdp"
+        android:gravity="center"
+        android:maxLines="3"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:visibility="visible"
+        />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/_3sdp"
+        android:background="@color/gray" />
+
+    <TextView
+        android:id="@+id/idAepsNarrationTxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/_5sdp"
+        android:paddingBottom="@dimen/_5sdp"
+        android:gravity="center"
+        android:maxLines="3"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:visibility="visible"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/_3sdp"
+        android:background="@color/gray" />
+
+</LinearLayout>
+</androidx.cardview.widget.CardView>

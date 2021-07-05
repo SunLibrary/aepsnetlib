@@ -423,4 +423,14 @@
 
 
     <color name="colorBlue">#21c9ef</color>
+
+    <color name="background">#e5e5e5</color>
+    <color name="backgroundTintColor">#21c9ef</color>
+    <color name="colorGreen">#FF0E6E07</color>
+    <color name="colorRed">#E7492E</color>
+    <color name="disabled_color">#44000000</color>
+    <color name="error_color">#E7492E</color>
+
+
+
 </resources>

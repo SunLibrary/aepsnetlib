@@ -36,9 +36,9 @@ import com.netpaisa.aepsriseinlib.model.AepsBalanceModel;
 import com.netpaisa.aepsriseinlib.model.AepsInstaBankModel;
 import com.netpaisa.aepsriseinlib.model.AepsMiniStmntModel;
 import com.netpaisa.aepsriseinlib.model.AepsWithdrawalModel;
-import com.prodevsblog.myutils.RecyclerDialog;
-import com.prodevsblog.myutils.RecyclerItem;
-import com.prodevsblog.myutils.Sort;
+//import com.prodevsblog.myutils.RecyclerDialog;
+//import com.prodevsblog.myutils.RecyclerItem;
+//import com.prodevsblog.myutils.Sort;
 
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
@@ -85,8 +85,8 @@ public class AepsRiseinActivity extends AppCompatActivity implements View.OnClic
 
     private CompositeDisposable disposable = new CompositeDisposable();
 
-    private List<RecyclerItem> bankList;
-    private RecyclerItem selectedBank;
+    //private List<RecyclerItem> bankList;
+   // private RecyclerItem selectedBank;
 
     private String mSubmitAadharNo = "", mBankID = "", mSubmitMobileNo = "", mSubmitAmount = "0";
 
@@ -902,36 +902,36 @@ public class AepsRiseinActivity extends AppCompatActivity implements View.OnClic
     }
 
     private void showBankDialog() {
-        if (bankList != null && bankList.size() > 0) {
+        //if (bankList != null && bankList.size() > 0) {
 
-            RecyclerDialog recyclerDialog = new RecyclerDialog(Objects.requireNonNull(AepsRiseinActivity.this), bankList, true);
-            recyclerDialog.show();
-            recyclerDialog.setSortList(Sort.FIRST_TEXT_VALUE, true);
-            recyclerDialog.setCamelCase(false);
-            recyclerDialog.setCancelable(false);
-            recyclerDialog.setTitle(MsgConst.SELECT_BANK);
-            recyclerDialog.setOnItemClickListener((view, obj, position) -> {
-                this.selectedBank = obj;
-                txBankName.setText(obj.getFirstTextValue());
-                //bankName = obj.getFirstTextValue().toUpperCase();
-                //mBankID = obj.getSecondTextValue();
-                mCaptureBankID = obj.getStringId();
-            });
-            recyclerDialog.getScroller().setBubbleColor(0xff8f93d1);
-            recyclerDialog.getScroller().setHandleColor(0xff5e64ce);
-        }
+//            RecyclerDialog recyclerDialog = new RecyclerDialog(Objects.requireNonNull(AepsRiseinActivity.this), bankList, true);
+//            recyclerDialog.show();
+//            recyclerDialog.setSortList(Sort.FIRST_TEXT_VALUE, true);
+//            recyclerDialog.setCamelCase(false);
+//            recyclerDialog.setCancelable(false);
+//            recyclerDialog.setTitle(MsgConst.SELECT_BANK);
+//            recyclerDialog.setOnItemClickListener((view, obj, position) -> {
+//                this.selectedBank = obj;
+//                txBankName.setText(obj.getFirstTextValue());
+//                //bankName = obj.getFirstTextValue().toUpperCase();
+//                //mBankID = obj.getSecondTextValue();
+//                mCaptureBankID = obj.getStringId();
+//            });
+//            recyclerDialog.getScroller().setBubbleColor(0xff8f93d1);
+//            recyclerDialog.getScroller().setHandleColor(0xff5e64ce);
+       // }
     }
 
     void processBankList(AepsInstaBankModel bank) {
-        bankList = new ArrayList<>();
+       // bankList = new ArrayList<>();
 
-        RecyclerItem recyclerItem;
-        for (AepsInstaBankModel.DATum item : bank.getData()) {
-            recyclerItem = new RecyclerItem();
-            recyclerItem.setFirstTextValue(item.getBankName());
-            recyclerItem.setStringId(item.getBankiin());
-            bankList.add(recyclerItem);
-        }
+//        RecyclerItem recyclerItem;
+//        for (AepsInstaBankModel.DATum item : bank.getData()) {
+//            recyclerItem = new RecyclerItem();
+//            recyclerItem.setFirstTextValue(item.getBankName());
+//            recyclerItem.setStringId(item.getBankiin());
+//            bankList.add(recyclerItem);
+//        }
     }
 
 

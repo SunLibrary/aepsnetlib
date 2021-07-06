@@ -26,10 +26,6 @@
         <package android:name="com.acpl.registersdk" />
     </queries>
 
-
-
-
-
     <application
         android:usesCleartextTraffic="true"
         tools:ignore="UnusedAttribute">

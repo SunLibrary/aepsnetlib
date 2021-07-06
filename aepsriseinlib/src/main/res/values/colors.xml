@@ -431,6 +431,13 @@
     <color name="disabled_color">#44000000</color>
     <color name="error_color">#E7492E</color>
 
+    <!--<color name="colorPrimary">#f76625</color>
+    <color name="colorPrimaryDark">#a13100</color>
+    <color name="colorAccent">#ff9900</color>
+    <color name="color_icon_start">#f76625</color>
+    <color name="color_icon_center">#f76625</color>
+    <color name="color_icon_end">#a13100</color>
+    <color name="overlay_dark_40">#66000000</color>-->
 
 
 </resources>

@@ -73,9 +73,10 @@ dependencies {
 
     implementation 'com.intuit.sdp:sdp-android:1.0.6'
     implementation 'com.intuit.ssp:ssp-android:1.0.6'
-    //implementation files('libs/my_utils.aar')
-    implementation files('libs/java-json.jar')
 
+    //implementation files('libs/my_utils.aar')
+    //implementation files('libs/java-json.jar')
+    //implementation 'com.github.smart-fun:XmlToJson:1.4.4'
     //implementation files('libs/simple-xml-2.7.1.jar')
     //implementation group: 'xml-security', name: 'xmlsec', version: '1.3.0'
     //implementation files('libs/my_utils.aar')

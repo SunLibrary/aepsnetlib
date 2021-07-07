@@ -135,6 +135,7 @@ public class AepsRiseinActivity extends AppCompatActivity implements View.OnClic
             getSupportActionBar().setDisplayShowTitleEnabled(true);
         }
 
+
         apiServiceAeps = ApiClientAeps.getClient(getApplicationContext()).create(ApiServiceAeps.class);
 
         ConnectivityCheckUtility connectivityCheckUtility = new ConnectivityCheckUtility(this);
@@ -144,25 +145,25 @@ public class AepsRiseinActivity extends AppCompatActivity implements View.OnClic
 
         initView();
 
-        Intent mIntent = this.getIntent();
-        if (mIntent != null) {
-            if (mIntent.getStringExtra("clientTransactionId") == null) {
-                this.finish();
-            } else {
-                this.agent_id = mIntent.getStringExtra("agent_id");
-                this.developer_id = mIntent.getStringExtra("developer_id");
-                this.password = mIntent.getStringExtra("password");
-                this.clientTransactionId = mIntent.getStringExtra("clientTransactionId");
-                this.bankVendorType = mIntent.getStringExtra("bankVendorType");
-                if (this.clientTransactionId.length() >= 6 && this.clientTransactionId.length() <= 20) {
-                    MyUtils.PRIMARY_COLOR = mIntent.getIntExtra("primary_color", MyUtils.PRIMARY_COLOR);
-                    MyUtils.ACCENT_COLOR = mIntent.getIntExtra("accent_color", MyUtils.ACCENT_COLOR);
-                    MyUtils.PRIMARY_DARK_COLOR = mIntent.getIntExtra("primary_dark_color", MyUtils.PRIMARY_DARK_COLOR);
-                } else {
-
-                }
-            }
-        }
+//        Intent mIntent = this.getIntent();
+//        if (mIntent != null) {
+//            if (mIntent.getStringExtra("clientTransactionId") == null) {
+//                this.finish();
+//            } else {
+//                this.agent_id = mIntent.getStringExtra("agent_id");
+//                this.developer_id = mIntent.getStringExtra("developer_id");
+//                this.password = mIntent.getStringExtra("password");
+//                this.clientTransactionId = mIntent.getStringExtra("clientTransactionId");
+//                this.bankVendorType = mIntent.getStringExtra("bankVendorType");
+//                if (this.clientTransactionId.length() >= 6 && this.clientTransactionId.length() <= 20) {
+//                    MyUtils.PRIMARY_COLOR = mIntent.getIntExtra("primary_color", MyUtils.PRIMARY_COLOR);
+//                    MyUtils.ACCENT_COLOR = mIntent.getIntExtra("accent_color", MyUtils.ACCENT_COLOR);
+//                    MyUtils.PRIMARY_DARK_COLOR = mIntent.getIntExtra("primary_dark_color", MyUtils.PRIMARY_DARK_COLOR);
+//                } else {
+//
+//                }
+//            }
+//        }
 
     }
 

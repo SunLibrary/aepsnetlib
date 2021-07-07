@@ -44,7 +44,7 @@ import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.json.XML;
+//import org.json.XML;
 
 import java.security.SecureRandom;
 import java.util.ArrayList;
@@ -53,6 +53,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Random;
 
+import fr.arnaudguyon.xmltojsonlib.XmlToJson;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.observers.DisposableSingleObserver;
@@ -977,9 +978,11 @@ public class AepsRiseinActivity extends AppCompatActivity implements View.OnClic
                                 JSONObject jsonObj = null;
                                 try {
                                     try {
-                                        jsonObj = XML.toJSONObject(resultPidData);
-                                    } catch (JSONException e) {
-                                        e.printStackTrace();
+                                        //jsonObj = XML.toJSONObject(resultPidData);
+                                        XmlToJson xmlToJson = new XmlToJson.Builder(resultPidData).build();
+                                          // convert to a JSONObject
+                                        jsonObj = xmlToJson.toJson();
+
                                     } catch (Exception ex) {
                                         ex.printStackTrace();
                                     }
@@ -1033,10 +1036,11 @@ public class AepsRiseinActivity extends AppCompatActivity implements View.OnClic
                                 JSONObject jsonObj = null;
                                 try {
                                     try {
-                                        jsonObj = XML.toJSONObject(resultPidData);
-                                    } catch (JSONException e) {
-                                        e.printStackTrace();
-                                    } catch (Exception ex) {
+                                        //jsonObj = XML.toJSONObject(resultPidData);
+                                        XmlToJson xmlToJson = new XmlToJson.Builder(resultPidData).build();
+                                        // convert to a JSONObject
+                                        jsonObj = xmlToJson.toJson();
+                                    }   catch (Exception ex) {
                                         ex.printStackTrace();
                                     }
                                     //  Log.e("CapturedJSONMr", jsonObj.toString());
@@ -1093,9 +1097,10 @@ public class AepsRiseinActivity extends AppCompatActivity implements View.OnClic
                                 JSONObject jsonObj = null;
                                 try {
                                     try {
-                                        jsonObj = XML.toJSONObject(resultPidData);
-                                    } catch (JSONException e) {
-                                        e.printStackTrace();
+                                        //jsonObj = XML.toJSONObject(resultPidData);
+                                        XmlToJson xmlToJson = new XmlToJson.Builder(resultPidData).build();
+                                        // convert to a JSONObject
+                                        jsonObj = xmlToJson.toJson();
                                     } catch (Exception ex) {
                                         ex.printStackTrace();
                                     }
@@ -1146,18 +1151,19 @@ public class AepsRiseinActivity extends AppCompatActivity implements View.OnClic
 
                 Bundle strBundle = data.getExtras();
                 if (strBundle != null) {
-                    String PidDataResult = strBundle.getString("PID_DATA");  // in this varaible you will get Pid data
+                    String resultPidData = strBundle.getString("PID_DATA");  // in this varaible you will get Pid data
                     JSONObject jsonObj = null;
                     try {
                         try {
-                            jsonObj = XML.toJSONObject(PidDataResult);
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        } catch (Exception ex) {
+                            //jsonObj = XML.toJSONObject(resultPidData);
+                            XmlToJson xmlToJson = new XmlToJson.Builder(resultPidData).build();
+                            // convert to a JSONObject
+                            jsonObj = xmlToJson.toJson();
+                        }  catch (Exception ex) {
                             ex.printStackTrace();
                         }
 
-                        Log.e("CapturedJSONstr", jsonObj.toString());
+                        //Log.e("CapturedJSONstr", jsonObj.toString());
 
                         JSONObject strPidDataObject = jsonObj.getJSONObject("PidData");
                         //sPidData = strPidDataObject.toString();

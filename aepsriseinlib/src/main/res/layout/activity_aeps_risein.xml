@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white"
     android:orientation="vertical"
     tools:context=".AepsRiseinActivity">
 
 
-    <com.google.android.material.appbar.AppBarLayout
+     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbarAeps"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -39,16 +39,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:visibility="visible">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-
                 <!--Start -->
-
-
                 <LinearLayout
                     android:id="@+id/aepsInstaTransLayout"
                     android:layout_width="match_parent"
@@ -62,8 +53,7 @@
                         android:layout_marginTop="@dimen/_30sdp"
                         android:gravity="center"
                         android:orientation="horizontal"
-                        android:visibility="visible">
-
+                        android:visibility="gone">
 
                         <TextView
                             android:id="@+id/txBankName"
@@ -78,6 +68,23 @@
                             android:paddingRight="@dimen/_5ssp"
                             android:textColor="@android:color/black"
                             android:textSize="@dimen/_12sdp" />
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_40sdp"
+                        android:layout_marginTop="@dimen/_30sdp"
+                        android:background="@android:drawable/editbox_background"
+                        android:orientation="vertical">
+
+                        <com.netpaisa.aepsriseinlib.adapter.SearchableSpinner
+                            android:id="@+id/bank_name_spinner"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            app:hintText="@string/select_bank_name" />
 
                     </LinearLayout>
 
@@ -228,27 +235,10 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="2"
                             android:text="@string/capture"
-                            android:visibility="invisible"/>
-
-                        <Button
-                            android:id="@+id/btnSubmit"
-                            style="@style/btn2"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="2"
-                            android:text="@string/submit"
-                            android:visibility="visible" />
-
+                            android:visibility="visible"/>
                     </LinearLayout>
-
-
                 </LinearLayout>
                 <!--End-->
-
-
-            </LinearLayout>
         </ScrollView>
-
-
     </LinearLayout>
 </LinearLayout>

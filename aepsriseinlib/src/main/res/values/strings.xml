@@ -838,6 +838,8 @@
 
     <string name="select_tans_type">Please Select Transaction Type</string>
 
-
+    <declare-styleable name="SearchableSpinner">
+        <attr format="string" name="hintText"/>
+    </declare-styleable>
 
 </resources>

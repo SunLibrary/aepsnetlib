@@ -32,6 +32,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.netpaisa.aepsriseinlib.adapter.AepsMiniStmtAdapter;
+import com.netpaisa.aepsriseinlib.adapter.SpinnerAdapter;
 import com.netpaisa.aepsriseinlib.model.AepsBalanceModel;
 import com.netpaisa.aepsriseinlib.model.AepsInstaBankModel;
 import com.netpaisa.aepsriseinlib.model.AepsMiniStmntModel;
@@ -68,9 +69,9 @@ public class AepsRiseinActivity extends AppCompatActivity implements View.OnClic
     private Spinner spinnerTotalFingerCount, spinnerTotalFingerType, spinnerTotalFingerFormat, spinnerEnv;
     private LinearLayout linearFingerCount, linearFingerFormat, linearTimeoutPidVer, linearSelectPosition, linearAdharNo, linearAmount, activityMain, aepsInstaTransLayout;
     private EditText edtxAdharNo, edtxTimeOut, edtxPidVer, edtxMobileNo, edtxAmount;
-    private TextView txtSelectPosition, txtOutput, txtDataLabel, txBankName, txTransType;
+    private TextView txtSelectPosition, txtOutput, txtDataLabel,  /*txBankName,*/ txTransType;
 
-    private Spinner spnrTransType, spnrDeviceType;
+    private Spinner spnrTransType, spnrDeviceType, bankNameSpinner;
 
     private Button btnDeviceInfo, btnCapture, btnSubmit, btnCaptureThumb, btnAuthRequest, btnReset;
     private CheckBox chbxUnknown, chbxLeftIndex, chbxLeftMiddle, chbxLeftRing, chbxLeftSmall, chbxLeftThumb, chbxRightIndex,
@@ -122,6 +123,8 @@ public class AepsRiseinActivity extends AppCompatActivity implements View.OnClic
     private String clientTransactionId;
     private String bankVendorType;
 
+    private List<AepsInstaBankModel.DATum> bankDataList = new ArrayList(0);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -129,7 +132,6 @@ public class AepsRiseinActivity extends AppCompatActivity implements View.OnClic
 
         Toolbar toolbar = findViewById(R.id.toolbarAeps);
         setSupportActionBar(toolbar);
-
 
         if (getSupportActionBar() != null) {
             Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
@@ -171,23 +173,44 @@ public class AepsRiseinActivity extends AppCompatActivity implements View.OnClic
 
     private void initView() {
 
-
-        linearAdharNo = (LinearLayout) findViewById(R.id.linearAdharNo);
-        linearAdharNo.setVisibility(View.VISIBLE);
-        linearAmount = (LinearLayout) findViewById(R.id.linearAmount);
-        activityMain = (LinearLayout) findViewById(R.id.activity_main);
-
         aepsInstaTransLayout = (LinearLayout) findViewById(R.id.aepsInstaTransLayout);
         aepsInstaTransLayout.setVisibility(View.VISIBLE);
 
-        txBankName = (TextView) findViewById(R.id.txBankName);
-        txBankName.setOnClickListener(this);
+        linearAdharNo = (LinearLayout) findViewById(R.id.linearAdharNo);
+        linearAdharNo.setVisibility(View.VISIBLE);
+
+        activityMain = (LinearLayout) findViewById(R.id.activity_main);
+        //txBankName = (TextView) findViewById(R.id.txBankName);
+       // txBankName.setOnClickListener(this);
         edtxAdharNo = (EditText) findViewById(R.id.edtxAdharNo);
         edtxMobileNo = (EditText) findViewById(R.id.edtxMobileNo);
+        linearAmount = (LinearLayout) findViewById(R.id.linearAmount);
         edtxAmount = (EditText) findViewById(R.id.edtxAmount);
 
         btnCapture = (Button) findViewById(R.id.btnCapture);
         btnCapture.setOnClickListener(this);
+
+        bankNameSpinner = (Spinner) findViewById(R.id.bank_name_spinner);
+        bankNameSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                Log.e("Bank List ", bankDataList.size()+"" );
+                if (bankDataList.size() > 0) {
+                    String strCashInBankName = parent.getSelectedItem().toString();
+                    for(int i = 0; i < bankDataList.size(); ++i) {
+                        if ((bankDataList.get(i)).getBankName().equalsIgnoreCase(strCashInBankName)) {
+                            String BankIIN = (bankDataList.get(i)).getBankiin();
+                            mCaptureBankID = BankIIN ;
+                            Log.e("Capture BankID", mCaptureBankID);
+                            break;
+                        }
+                    }
+                }
+            }
+
+            public void onNothingSelected(AdapterView<?> parent) {
+                Log.e("Capture BankID", mCaptureBankID);
+            }
+        });
 
 
         spnrTransType = findViewById(R.id.txTransType);
@@ -370,10 +393,6 @@ public class AepsRiseinActivity extends AppCompatActivity implements View.OnClic
                 }
             }
 
-
-
-
-
             if (mDeviceType.equals("Mantra MFS 100")) {
                 try {
                     String pidOptionMantra = MsgConst.PID_OPTION_1;
@@ -499,13 +518,15 @@ public class AepsRiseinActivity extends AppCompatActivity implements View.OnClic
     }
 
 
+
+
     private void sendInstaTransaction(String userId, String latitude, String longitude, String capturedXmlData,  String submitAadharNo, String bankID, String submitMobileNo, String submitAmount) {
 
-        Dialog dialog = MyDialog.getFullWaitDialog(AepsRiseinActivity.this);
-
-        if (!dialog.isShowing()) {
-            MyDialog.show(dialog);
-        }
+        //Dialog dialog = MyDialog.getFullWaitDialog(AepsRiseinActivity.this);
+        MyUtils.showProgressDialog(AepsRiseinActivity.this, "Please wait..", false);
+//        if (!dialog.isShowing()) {
+//            MyDialog.show(dialog);
+//        }
 
         if (submitAmount.isEmpty() || submitAmount.equalsIgnoreCase("")) {
             submitAmount = "0";
@@ -558,9 +579,10 @@ public class AepsRiseinActivity extends AppCompatActivity implements View.OnClic
                         @Override
                         public void onSuccess(@NotNull AepsWithdrawalModel response) {
                             try {
-                                if (dialog.isShowing()) {
-                                    MyDialog.exit(dialog);
-                                }
+                                MyUtils.hideProgressDialog();
+//                                if (dialog.isShowing()) {
+//                                    MyDialog.exit(dialog);
+//                                }
                                 if (response.getErrorCode() == 0) {
                                     showWithdrawalDialog(response);
                                 } else if (response.getErrorCode() == 1) {
@@ -577,9 +599,10 @@ public class AepsRiseinActivity extends AppCompatActivity implements View.OnClic
                         @Override
                         public void onError(Throwable e) {
                             try {
-                                if (dialog.isShowing()) {
-                                    MyDialog.exit(dialog);
-                                }
+                                MyUtils.hideProgressDialog();
+//                                if (dialog.isShowing()) {
+//                                    MyDialog.exit(dialog);
+//                                }
                                 showResponseDialog("Please try again, Server not responding..." + e.getMessage() + "");
                             } catch (Exception ex) {
                                 Log.e("Server Exception", "" + ex);
@@ -594,9 +617,10 @@ public class AepsRiseinActivity extends AppCompatActivity implements View.OnClic
                         @Override
                         public void onSuccess(@NotNull AepsWithdrawalModel response) {
                             try {
-                                if (dialog.isShowing()) {
-                                    MyDialog.exit(dialog);
-                                }
+                                MyUtils.hideProgressDialog();
+//                                if (dialog.isShowing()) {
+//                                    MyDialog.exit(dialog);
+//                                }
                                 if (response.getErrorCode() == 0) {
                                     showWithdrawalDialog(response);
                                 } else if (response.getErrorCode() == 1) {
@@ -613,9 +637,10 @@ public class AepsRiseinActivity extends AppCompatActivity implements View.OnClic
                         @Override
                         public void onError(Throwable e) {
                             try {
-                                if (dialog.isShowing()) {
-                                    MyDialog.exit(dialog);
-                                }
+                                MyUtils.hideProgressDialog();
+//                                if (dialog.isShowing()) {
+//                                    MyDialog.exit(dialog);
+//                                }
                                 showResponseDialog("Please try again, Server not responding..." + e.getMessage() + "");
                             } catch (Exception ex) {
                                 Log.e("Server Exception", "" + ex);
@@ -632,10 +657,10 @@ public class AepsRiseinActivity extends AppCompatActivity implements View.OnClic
                         @Override
                         public void onSuccess(@NotNull AepsMiniStmntModel response) {
                             try {
-
-                                if (dialog.isShowing()) {
-                                    MyDialog.exit(dialog);
-                                }
+                             MyUtils.hideProgressDialog();
+//                                if (dialog.isShowing()) {
+//                                    MyDialog.exit(dialog);
+//                                }
 
                                 if (response.getErrorCode() == 0) {
                                     showMiniStatementDialog(response);
@@ -652,9 +677,10 @@ public class AepsRiseinActivity extends AppCompatActivity implements View.OnClic
                         @Override
                         public void onError(Throwable e) {
                             try {
-                                if (dialog.isShowing()) {
-                                    MyDialog.exit(dialog);
-                                }
+                                MyUtils.hideProgressDialog();
+//                                if (dialog.isShowing()) {
+//                                    MyDialog.exit(dialog);
+//                                }
                                 showResponseDialog("Please try again, Server is not responding..." + e.getMessage() + "");
                             } catch (Exception ex) {
                                 Log.e("Server Exception", "" + ex);
@@ -669,9 +695,10 @@ public class AepsRiseinActivity extends AppCompatActivity implements View.OnClic
                         @Override
                         public void onSuccess(@NotNull AepsBalanceModel response) {
                             try {
-                                if (dialog.isShowing()) {
-                                    MyDialog.exit(dialog);
-                                }
+                                MyUtils.hideProgressDialog();
+//                                if (dialog.isShowing()) {
+//                                    MyDialog.exit(dialog);
+//                                }
                                 if (response.getErrorCode() == 0) {
                                     if (response.getBalance().isEmpty()) {
                                         showResponseDialog("Message :" + response.getMessage() + "\n\n" + "Balance Amount : \u20B9 0.0" + "\n\n");
@@ -692,9 +719,10 @@ public class AepsRiseinActivity extends AppCompatActivity implements View.OnClic
                         @Override
                         public void onError(Throwable e) {
                             try {
-                                if (dialog.isShowing()) {
-                                    MyDialog.exit(dialog);
-                                }
+                                MyUtils.hideProgressDialog();
+//                                if (dialog.isShowing()) {
+//                                    MyDialog.exit(dialog);
+//                                }
                                 showResponseDialog("Please try again, Server not responding..." + e.getMessage());
                             } catch (Exception ex) {
                                 Log.e("Server Exception", "" + ex);
@@ -858,11 +886,11 @@ public class AepsRiseinActivity extends AppCompatActivity implements View.OnClic
 
 
     void loadBankList() {
-
-        Dialog dialog = MyDialog.getFullWaitDialog(AepsRiseinActivity.this);
-        if (!dialog.isShowing()) {
-            MyDialog.show(dialog);
-        }
+        MyUtils.showProgressDialog(AepsRiseinActivity.this, "Please wait..", false);
+//        Dialog dialog = MyDialog.getFullWaitDialog(AepsRiseinActivity.this);
+//        if (!dialog.isShowing()) {
+//            MyDialog.show(dialog);
+//        }
 
         LinkedHashMap<String, String> params = new LinkedHashMap<>();
         //params.put("token", userToken);
@@ -877,7 +905,8 @@ public class AepsRiseinActivity extends AppCompatActivity implements View.OnClic
                     @Override
                     public void onSuccess(@NotNull AepsInstaBankModel response) {
                         try {
-                            MyDialog.exit(dialog);
+                            //MyDialog.exit(dialog);
+                            MyUtils.hideProgressDialog();
                             if (response.getErrorCode() == 0) {
                                 processBankList(response);
                             } else {
@@ -893,7 +922,8 @@ public class AepsRiseinActivity extends AppCompatActivity implements View.OnClic
                     @Override
                     public void onError(@NotNull Throwable e) {
                         try {
-                            MyDialog.exit(dialog);
+                           // MyDialog.exit(dialog);
+                            MyUtils.hideProgressDialog();
                             MyDialog.errorDialog(AepsRiseinActivity.this, e.getMessage());
                         } catch (Exception ex) {
                             Log.e("Server Exception", "" + ex);
@@ -924,7 +954,24 @@ public class AepsRiseinActivity extends AppCompatActivity implements View.OnClic
        // }
     }
 
-    void processBankList(AepsInstaBankModel bank) {
+    void processBankList(AepsInstaBankModel bankList) {
+
+        ArrayList<String> BankNameList = new ArrayList();
+
+        AepsInstaBankModel.DATum  item = null ;
+        for(int index = 0; index < bankList.getData().size(); ++index) {
+            item = new AepsInstaBankModel.DATum();
+            item.setBankName(bankList.getData().get(index).getBankName());
+            item.setBankiin(bankList.getData().get(index).getBankiin());
+            bankDataList.add(item);
+            BankNameList.add((bankDataList.get(index)).getBankName());
+        }
+
+        ArrayAdapter<String> adapter = new SpinnerAdapter(this, android.R.layout.simple_spinner_item, BankNameList);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);//17367049
+        bankNameSpinner.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
+
        // bankList = new ArrayList<>();
 
 //        RecyclerItem recyclerItem;
@@ -1291,6 +1338,28 @@ public class AepsRiseinActivity extends AppCompatActivity implements View.OnClic
             dialog.show();
         }
 
+    @Override
+    public void onBackPressed() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Closing AEPS");
+        builder.setMessage("Are you sure you want to exit?");
+        builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                //Intent i = new Intent();
+                //i.putExtra("message", "");
+                //AepsRiseinActivity.super.setResult(0, i);
+                AepsRiseinActivity.super.finish();
+            }
+        });
+        builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                if (!AepsRiseinActivity.this.isFinishing()) {
+                    dialog.dismiss();
+                }
 
+            }
+        });
+        builder.create().show();
+    }
 
 }

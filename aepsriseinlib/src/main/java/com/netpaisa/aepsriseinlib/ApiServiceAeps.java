@@ -45,8 +45,6 @@ public interface ApiServiceAeps {
     Single<AepsMiniStmntModel> getAepsMiniStatement(@FieldMap Map<String, String> param);
 
 
-
-
     /*************************AEPS KYC***********************************/
 
 //    @POST("aeps/outlet-details.php")
@@ -57,16 +55,13 @@ public interface ApiServiceAeps {
 //    @FormUrlEncoded
 //    Single<AepsStatusModel> getAepsOutletStatus(@FieldMap Map<String, String> param);
 //
-//
 //    @POST("aeps/get-aeps-registration-otp.php")
 //    @FormUrlEncoded
 //    Single<AepsGetOTPModel> getAepsRegisterOtp(@FieldMap Map<String, String> param);
 //
-//
 //    @POST("aeps/aeps-registration.php")
 //    @FormUrlEncoded
 //    Single<AepsRegisterModel> sendAepsRegisteration(@FieldMap Map<String, String> param);
-//
 //
 //    @POST("aeps/aeps-submit-kyc.php")
 //    @Multipart

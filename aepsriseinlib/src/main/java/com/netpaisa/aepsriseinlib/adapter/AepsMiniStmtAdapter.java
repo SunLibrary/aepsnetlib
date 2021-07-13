@@ -11,17 +11,17 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.netpaisa.aepsriseinlib.R;
-import com.netpaisa.aepsriseinlib.model.AepsMiniStmntModel;
+import com.netpaisa.aepsriseinlib.model.MiniStmntAepsModel;
 
 import java.util.List;
 
 public class AepsMiniStmtAdapter extends RecyclerView.Adapter<AepsMiniStmtAdapter.ViewHolder>{
 
     Context context;
-    List<AepsMiniStmntModel.Data.MiniStatement> mAepsMiniStmtList;
+    List<MiniStmntAepsModel.Res.Data.MiniStatement> mAepsMiniStmtList;
 
 
-    public AepsMiniStmtAdapter(List<AepsMiniStmntModel.Data.MiniStatement> AepsMiniStmtLists, Context context) {
+    public AepsMiniStmtAdapter(List<MiniStmntAepsModel.Res.Data.MiniStatement> AepsMiniStmtLists, Context context) {
         this.mAepsMiniStmtList = AepsMiniStmtLists;
         this.context = context;
     }
@@ -38,7 +38,7 @@ public class AepsMiniStmtAdapter extends RecyclerView.Adapter<AepsMiniStmtAdapte
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int i) {
-        //final List<AepsMiniStmntModel.Data.MiniStatement> AepsMiniStmtList = mAepsMiniStmtList.get(i).getData().getMiniStatement();
+        //final List<MiniStmntAepsModel.Data.MiniStatement> AepsMiniStmtList = mAepsMiniStmtList.get(i).getData().getMiniStatement();
 
         viewHolder.mAepsDateTxt.setText("Transaction Date : " +mAepsMiniStmtList.get(i).getDate());
         viewHolder.mAepsTxnTypeTxt.setText("Transaction Type : " +mAepsMiniStmtList.get(i).getTxnType());

@@ -63,7 +63,7 @@ public class MyUtils {
     public static String generateHashWithHmac256(String message, String key) {
         String value="";
         try {
-            final String hashingAlgorithm = "HmacSHA256"; //or "HmacSHA1", "HmacSHA512"
+            final String hashingAlgorithm = "HmacSHA256";
             byte[] bytes = hmac(hashingAlgorithm, key.getBytes(), message.getBytes());
             final String messageDigest = bytesToHex(bytes);
             value=messageDigest;

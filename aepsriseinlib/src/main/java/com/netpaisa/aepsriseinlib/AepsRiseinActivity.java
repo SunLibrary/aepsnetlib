@@ -33,10 +33,11 @@ import android.widget.Toast;
 
 import com.netpaisa.aepsriseinlib.adapter.AepsMiniStmtAdapter;
 import com.netpaisa.aepsriseinlib.adapter.SpinnerAdapter;
-import com.netpaisa.aepsriseinlib.model.AepsBalanceModel;
-import com.netpaisa.aepsriseinlib.model.AepsInstaBankModel;
-import com.netpaisa.aepsriseinlib.model.AepsMiniStmntModel;
-import com.netpaisa.aepsriseinlib.model.AepsWithdrawalModel;
+
+import com.netpaisa.aepsriseinlib.model.BalanceAepsModel;
+import com.netpaisa.aepsriseinlib.model.BankListAepsModel;
+import com.netpaisa.aepsriseinlib.model.MiniStmntAepsModel;
+import com.netpaisa.aepsriseinlib.model.WithdrawalAepsModel;
 //import com.prodevsblog.myutils.RecyclerDialog;
 //import com.prodevsblog.myutils.RecyclerItem;
 //import com.prodevsblog.myutils.Sort;
@@ -123,7 +124,7 @@ public class AepsRiseinActivity extends AppCompatActivity implements View.OnClic
     private String clientTransactionId;
     private String bankVendorType;
 
-    private List<AepsInstaBankModel.DATum> bankDataList = new ArrayList(0);
+    private List<BankListAepsModel.DATum> bankDataList = new ArrayList(0);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -520,7 +521,8 @@ public class AepsRiseinActivity extends AppCompatActivity implements View.OnClic
 
 
 
-    private void sendInstaTransaction(String userId, String latitude, String longitude, String capturedXmlData,  String submitAadharNo, String bankID, String submitMobileNo, String submitAmount) {
+    //private void sendInstaTransaction(String userId, String latitude, String longitude, String capturedXmlData,  String submitAadharNo, String bankID, String submitMobileNo, String submitAmount) {
+    private void sendInstaTransaction(String apiAccessKey, String outletId, String panNo, String latitude, String longitude, String bankiIn, String aadhaarUID, String mobileNo, String transType, String submitAmount, String biometricData ) {
 
         //Dialog dialog = MyDialog.getFullWaitDialog(AepsRiseinActivity.this);
         MyUtils.showProgressDialog(AepsRiseinActivity.this, "Please wait..", false);
@@ -532,63 +534,38 @@ public class AepsRiseinActivity extends AppCompatActivity implements View.OnClic
             submitAmount = "0";
         }
 
-        LinkedHashMap<String, String> params = new LinkedHashMap<>();
+        LinkedHashMap<String, String> paramsCaptured = new LinkedHashMap<>();
 
-       // params.put("token", userToken);
-        params.put("latitude", latitude);
-        params.put("longitude", longitude);
-        params.put("user_agent", userId);
-
-        params.put("agent_trid", getRandomTrnasID());
-        params.put("bankiin", bankID);
-        params.put("aadhaar_uid", submitAadharNo);
-        params.put("mobile", submitMobileNo);
-        params.put("amount", submitAmount);
-        params.put("trans_type", mTransType);
-
-
-
-//        params.put("pidDataType", sPidDataType);
-//        params.put("pidData", sPidDataContent);
-//        params.put("ci", sSkeyCi);
-//        params.put("dc", sDc);
-//        params.put("dpId", sDpId);
-//        params.put("errCode", sErrCode);
-//        params.put("errInfo", sErrInfo);
-//        params.put("fCount", sFCount);
-//        params.put("tType", "");
-//        params.put("hmac", sHmac);
-//        params.put("iCount", sICount);
-//        params.put("mc", sMc);
-//        params.put("mi", sMi);
-//        params.put("nmPoints", sNmPoints);
-//        params.put("pCount", sPCount);
-//        params.put("pType", spType);
-//        params.put("qScore", sQScore);
-//        params.put("rdsId", sRdsId);
-//        params.put("rdsVer", sRdsVer);
-//        params.put("sessionKey", sSkey);
-//        params.put("srno", sSrno);
-        //Log.e("Request Params :", ""+params);
+        paramsCaptured.put("api_access_key", apiAccessKey);
+        paramsCaptured.put("outletid", outletId);
+        paramsCaptured.put("pan_no", panNo);
+        paramsCaptured.put("latitude", latitude);
+        paramsCaptured.put("longitude", longitude);
+        paramsCaptured.put("bankiin", bankiIn);
+        paramsCaptured.put("aadhaar_uid", aadhaarUID);
+        paramsCaptured.put("mobile", mobileNo);
+        paramsCaptured.put("trans_type", transType);
+        paramsCaptured.put("amount", submitAmount);
+        String myChecksum = MyUtils.generateHashWithHmac256(MyUtils.formatQueryParams(paramsCaptured).trim(), MsgConst.CHECKSUM_KEY.trim());
+        paramsCaptured.put("checksum", myChecksum);
+        paramsCaptured.put("biometricData", biometricData);
 
         if (!mTransType.isEmpty() && mTransType.equalsIgnoreCase("WAP")) {
 
-            disposable.add(apiServiceAeps.getAepsWithdrawal(params).subscribeOn(Schedulers.io())
+            disposable.add(apiServiceAeps.getAepsWithdrawal(paramsCaptured).subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
-                    .subscribeWith(new DisposableSingleObserver<AepsWithdrawalModel>() {
+                    .subscribeWith(new DisposableSingleObserver<WithdrawalAepsModel>() {
                         @Override
-                        public void onSuccess(@NotNull AepsWithdrawalModel response) {
+                        public void onSuccess(@NotNull WithdrawalAepsModel response) {
                             try {
                                 MyUtils.hideProgressDialog();
-//                                if (dialog.isShowing()) {
-//                                    MyDialog.exit(dialog);
-//                                }
-                                if (response.getErrorCode() == 0) {
+
+                                if (response.getErrState() == 0) {
                                     showWithdrawalDialog(response);
-                                } else if (response.getErrorCode() == 1) {
-                                    showResponseDialog("Message :" + response.getMessage() + "\n\n");
+                                } else if (response.getErrState() == 1) {
+                                    showResponseDialog("Message :" + response.getMsg() + "\n\n");
                                 } else {
-                                    showResponseDialog("Message :" + response.getMessage() + "\n\n");
+                                    showResponseDialog("Message :" + response.getMsg() + "\n\n");
                                 }
 
                             } catch (Exception ex) {
@@ -611,22 +588,22 @@ public class AepsRiseinActivity extends AppCompatActivity implements View.OnClic
                     }));
         } else if (!mTransType.isEmpty() && mTransType.equalsIgnoreCase("MZZ")) {
 
-            disposable.add(apiServiceAeps.getAepsWithdrawal(params).subscribeOn(Schedulers.io())
+            disposable.add(apiServiceAeps.getAepsWithdrawal(paramsCaptured).subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
-                    .subscribeWith(new DisposableSingleObserver<AepsWithdrawalModel>() {
+                    .subscribeWith(new DisposableSingleObserver<WithdrawalAepsModel>() {
                         @Override
-                        public void onSuccess(@NotNull AepsWithdrawalModel response) {
+                        public void onSuccess(@NotNull WithdrawalAepsModel response) {
                             try {
                                 MyUtils.hideProgressDialog();
 //                                if (dialog.isShowing()) {
 //                                    MyDialog.exit(dialog);
 //                                }
-                                if (response.getErrorCode() == 0) {
+                                if (response.getErrState() == 0) {
                                     showWithdrawalDialog(response);
-                                } else if (response.getErrorCode() == 1) {
-                                    showResponseDialog("Message :" + response.getMessage() + "\n\n");
+                                } else if (response.getErrState() == 1) {
+                                    showResponseDialog("Message :" + response.getMsg() + "\n\n");
                                 } else {
-                                    showResponseDialog("Message :" + response.getMessage() + "\n\n");
+                                    showResponseDialog("Message :" + response.getMsg() + "\n\n");
                                 }
 
                             } catch (Exception ex) {
@@ -651,23 +628,23 @@ public class AepsRiseinActivity extends AppCompatActivity implements View.OnClic
 
         else if (!mTransType.isEmpty() && mTransType.equalsIgnoreCase("SAP")) { //Mini Statement
 
-            disposable.add(apiServiceAeps.getAepsMiniStatement(params).subscribeOn(Schedulers.io())
+            disposable.add(apiServiceAeps.getAepsMiniStatement(paramsCaptured).subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
-                    .subscribeWith(new DisposableSingleObserver<AepsMiniStmntModel>() {
+                    .subscribeWith(new DisposableSingleObserver<MiniStmntAepsModel>() {
                         @Override
-                        public void onSuccess(@NotNull AepsMiniStmntModel response) {
+                        public void onSuccess(@NotNull MiniStmntAepsModel response) {
                             try {
                              MyUtils.hideProgressDialog();
 //                                if (dialog.isShowing()) {
 //                                    MyDialog.exit(dialog);
 //                                }
 
-                                if (response.getErrorCode() == 0) {
+                                if (response.getErrState() == 0) {
                                     showMiniStatementDialog(response);
-                                } else if (response.getErrorCode() == 1) {
-                                    showResponseDialog("Message :" + response.getMessage() + "\n\n");
+                                } else if (response.getErrState() == 1) {
+                                    showResponseDialog("Message :" + response.getMsg() + "\n\n");
                                 } else {
-                                    showResponseDialog("Message :" + response.getMessage() + "\n\n");
+                                    showResponseDialog("Message :" + response.getMsg() + "\n\n");
                                 }
                             } catch (Exception ex) {
                                 Log.e("Server Exception", "" + ex);
@@ -689,26 +666,26 @@ public class AepsRiseinActivity extends AppCompatActivity implements View.OnClic
 
                     }));
         } else if (!mTransType.isEmpty() && mTransType.equalsIgnoreCase("BAP")) {
-            disposable.add(apiServiceAeps.getAepsInstaBalance(params).subscribeOn(Schedulers.io())
+            disposable.add(apiServiceAeps.getAepsInstaBalance(paramsCaptured).subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
-                    .subscribeWith(new DisposableSingleObserver<AepsBalanceModel>() {
+                    .subscribeWith(new DisposableSingleObserver<BalanceAepsModel>() {
                         @Override
-                        public void onSuccess(@NotNull AepsBalanceModel response) {
+                        public void onSuccess(@NotNull BalanceAepsModel response) {
                             try {
                                 MyUtils.hideProgressDialog();
 //                                if (dialog.isShowing()) {
 //                                    MyDialog.exit(dialog);
 //                                }
-                                if (response.getErrorCode() == 0) {
-                                    if (response.getBalance().isEmpty()) {
-                                        showResponseDialog("Message :" + response.getMessage() + "\n\n" + "Balance Amount : \u20B9 0.0" + "\n\n");
+                                if (response.getErrState() == 0) {
+                                    if (response.getRes().getData().getBalance().isEmpty()) {
+                                        showResponseDialog("Message :" + response.getMsg() + "\n\n" + "Balance Amount : \u20B9 0.0" + "\n\n");
                                     } else {
-                                        showResponseDialog("Message :" + response.getMessage() + "\n\n" + "Balance Amount : \u20B9 " + response.getBalance() + "\n\n");
+                                        showResponseDialog("Message :" + response.getMsg() + "\n\n" + "Balance Amount : \u20B9 " + response.getRes().getData().getBalance() + "\n\n");
                                     }
-                                } else if (response.getErrorCode() == 1) {
-                                    showResponseDialog("Message :" + response.getMessage() + "\n\n");
+                                } else if (response.getErrState() == 1) {
+                                    showResponseDialog("Message :" + response.getMsg() + "\n\n");
                                 } else {
-                                    showResponseDialog("Message :" + response.getMessage() + "\n\n");
+                                    showResponseDialog("Message :" + response.getMsg() + "\n\n");
                                 }
                             } catch (Exception ex) {
                                 Log.e("Server Exception", "" + ex);
@@ -757,7 +734,8 @@ public class AepsRiseinActivity extends AppCompatActivity implements View.OnClic
     }
 
     @SuppressLint("SetTextI18n")
-    private void showWithdrawalDialog(AepsWithdrawalModel mAepsWithdrawal) {
+    private void showWithdrawalDialog(WithdrawalAepsModel mAepsWithdrawal) {
+   // private void showWithdrawalDialog(AepsWithdrawalModel mAepsWithdrawal) {
 
         try {
 
@@ -776,20 +754,21 @@ public class AepsRiseinActivity extends AppCompatActivity implements View.OnClic
             mAepsTransType.setText("Withdrawal");
             mAepsTransId = dialog.findViewById(R.id.idAepsTransId);
 
-            String mTransID = mAepsWithdrawal.getData().getTranId() + "";
+            //String mTransID = mAepsWithdrawal.getData().getTranId() + "";
+            String mTransID = mAepsWithdrawal.getRes().getData().getTranId() + "";
             if (!mTransID.isEmpty() && mTransID.equalsIgnoreCase("null"))
                 mAepsTransId.setText("Transaction Id : " + mTransID);
 
             mAepsAmount = dialog.findViewById(R.id.idAepsAmount);
-            mAepsAmount.setText("Withdraw Amount : \u20B9 " + mAepsWithdrawal.getData().getAmount() + "");
+            mAepsAmount.setText("Withdraw Amount : \u20B9 " + mAepsWithdrawal.getRes().getData().getAmount() + "");
             mAepsBalance = dialog.findViewById(R.id.idAepsBalance);
-            mAepsBalance.setText("Balance Amount : \u20B9 " + mAepsWithdrawal.getData().getBalance() + "");
+            mAepsBalance.setText("Balance Amount : \u20B9 " + mAepsWithdrawal.getRes().getData().getBalance() + "");
             mAepsAccountNo = dialog.findViewById(R.id.idAepsAccountNo);
-            mAepsAccountNo.setText("Account No. : " + mAepsWithdrawal.getData().getAccountNo() + "");
+            mAepsAccountNo.setText("Account No. : " + mAepsWithdrawal.getRes().getData().getAccountNo() + "");
             mAepsMessage = dialog.findViewById(R.id.idAepsMessage);
-            mAepsMessage.setText("Message  : " + mAepsWithdrawal.getData().getTranId() + "");
+            mAepsMessage.setText("Message  : " + mAepsWithdrawal.getRes().getData().getTranId() + "");
             mAepsStatus = dialog.findViewById(R.id.idAepsStatus);
-            mAepsStatus.setText("Status  : " + mAepsWithdrawal.getData().getStatus() + "");
+            mAepsStatus.setText("Status  : " + mAepsWithdrawal.getRes().getData().getStatus() + "");
 
             (dialog.findViewById(R.id.idAepsCloseImg)).setOnClickListener(view -> {
                         finish();
@@ -809,7 +788,8 @@ public class AepsRiseinActivity extends AppCompatActivity implements View.OnClic
     }
 
     @SuppressLint("SetTextI18n")
-    private void showMiniStatementDialog(AepsMiniStmntModel mAepsMiniStmnt) {
+    private void showMiniStatementDialog(MiniStmntAepsModel mAepsMiniStmnt) {
+    //private void showMiniStatementDialog(AepsMiniStmntModel mAepsMiniStmnt) {
         try {
 
 
@@ -828,19 +808,19 @@ public class AepsRiseinActivity extends AppCompatActivity implements View.OnClic
             mAepsTransType.setText("Mini Statement");
 
             mAepsMessage = dialogMiniStatement.findViewById(R.id.idMessageMiniStmt);
-            mAepsMessage.setText("Message  : " + mAepsMiniStmnt.getMessage() + "");
+            mAepsMessage.setText("Message  : " + mAepsMiniStmnt.getMsg() + "");
 
             mAepsTransId = dialogMiniStatement.findViewById(R.id.idTransIdMiniStmt);
-            mAepsTransId.setText("Transaction Id : " + mAepsMiniStmnt.getData().getTranId() + "");
+            mAepsTransId.setText("Transaction Id : " + mAepsMiniStmnt.getRes().getData().getTranId() + "");
 
             mAepsBalance = dialogMiniStatement.findViewById(R.id.idBalanceMiniStmt);
-            mAepsBalance.setText("Balance Amount : \u20B9 " + mAepsMiniStmnt.getData().getBalance() + "");
+            mAepsBalance.setText("Balance Amount : \u20B9 " + mAepsMiniStmnt.getRes().getData().getBalance() + "");
 
             mAepsAccountNo = dialogMiniStatement.findViewById(R.id.idAccountNoMiniStmt);
-            mAepsAccountNo.setText("Account No. : " + mAepsMiniStmnt.getData().getAccountNo() + "");
+            mAepsAccountNo.setText("Account No. : " + mAepsMiniStmnt.getRes().getData().getAccountNo() + "");
 
             mAepsStatus = dialogMiniStatement.findViewById(R.id.idStatusMiniStmt);
-            mAepsStatus.setText("Status  : " + mAepsMiniStmnt.getData().getStatus() + "");
+            mAepsStatus.setText("Status  : " + mAepsMiniStmnt.getRes().getData().getStatus() + "");
 
 
             mAepsRecycler = dialogMiniStatement.findViewById(R.id.idRecyclerMiniStmt);
@@ -850,7 +830,7 @@ public class AepsRiseinActivity extends AppCompatActivity implements View.OnClic
             // List<AepsMiniStmntModel.Data.MiniStatement> mMiniStatementList = new AepsMiniStmntModel().getData().getMiniStatement();
 
 
-            AepsMiniStmtAdapter mAepsMiniStmtAdapter = new AepsMiniStmtAdapter(mAepsMiniStmnt.getData().getMiniStatement(), getApplicationContext());
+            AepsMiniStmtAdapter mAepsMiniStmtAdapter = new AepsMiniStmtAdapter(mAepsMiniStmnt.getRes().getData().getMiniStatement(), getApplicationContext());
             mAepsRecycler.setAdapter(mAepsMiniStmtAdapter);
 
 
@@ -901,16 +881,16 @@ public class AepsRiseinActivity extends AppCompatActivity implements View.OnClic
 
         disposable.add(apiServiceAeps.getAepsInstaBankList(params).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribeWith(new DisposableSingleObserver<AepsInstaBankModel>() {
+                .subscribeWith(new DisposableSingleObserver<BankListAepsModel>() {
                     @Override
-                    public void onSuccess(@NotNull AepsInstaBankModel response) {
+                    public void onSuccess(@NotNull BankListAepsModel response) {
                         try {
                             //MyDialog.exit(dialog);
                             MyUtils.hideProgressDialog();
-                            if (response.getErrorCode() == 0) {
+                            if (response.getErrState() == 0) {
                                 processBankList(response);
                             } else {
-                                MyDialog.errorDialog(AepsRiseinActivity.this, response.getMessage());
+                                MyDialog.errorDialog(AepsRiseinActivity.this, response.getMsg());
                             }
                             return;
                         } catch (Exception ex) {
@@ -954,13 +934,15 @@ public class AepsRiseinActivity extends AppCompatActivity implements View.OnClic
        // }
     }
 
-    void processBankList(AepsInstaBankModel bankList) {
+
+
+    void processBankList(BankListAepsModel bankList) {
 
         ArrayList<String> BankNameList = new ArrayList();
 
-        AepsInstaBankModel.DATum  item = null ;
+        BankListAepsModel.DATum  item = null ;
         for(int index = 0; index < bankList.getData().size(); ++index) {
-            item = new AepsInstaBankModel.DATum();
+            item = new BankListAepsModel.DATum();
             item.setBankName(bankList.getData().get(index).getBankName());
             item.setBankiin(bankList.getData().get(index).getBankiin());
             bankDataList.add(item);
@@ -1329,9 +1311,12 @@ public class AepsRiseinActivity extends AppCompatActivity implements View.OnClic
                 }
                 // sendInstaTransaction(mCaptureAadharNo, mCaptureBankID, mCaptureMobileNo, mCaptureAmount);
                 //sendInstaTransaction(mCaptureAadharNo, mCaptureBankID, mCaptureMobileNo, mCaptureAmount, mLatitude, mLongitude, mUserId);
-                sendInstaTransaction("mUserId", "mLatitude", "mLongitude", "mCapturedXmlData", mCaptureAadharNo, mCaptureBankID, mCaptureMobileNo, mCaptureAmount  );
+                //sendInstaTransaction("mUserId", "mLatitude", "mLongitude", "mCapturedXmlData", mCaptureAadharNo, mCaptureBankID, mCaptureMobileNo, mCaptureAmount  );
 
-            });
+                sendInstaTransaction(  "apiAccessKey",   "outletId",   "panNo",   "latitude",   "longitude",   mCaptureBankID, mCaptureAadharNo, mCaptureMobileNo, "transType", mCaptureAmount, "biometricData" ) ;
+
+
+                });
 
             (dialog.findViewById(R.id.cancelAadhaarCaptureBtn)).setOnClickListener(v -> dialog.dismiss());
 

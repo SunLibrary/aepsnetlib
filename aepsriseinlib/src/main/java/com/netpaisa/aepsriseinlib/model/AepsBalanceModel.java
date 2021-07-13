@@ -1,3 +1,4 @@
+/*
 package com.netpaisa.aepsriseinlib.model;
 
 import com.google.gson.annotations.Expose;
@@ -41,3 +42,4 @@ public class AepsBalanceModel implements Serializable {
         this.balance = balance;
     }
 }
+*/

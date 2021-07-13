@@ -1,5 +1,6 @@
 package com.netpaisa.aepsriseinlib;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
@@ -19,11 +20,14 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class ApiClientAeps {
 
     private static Retrofit retrofit = null;
-    private static int REQUEST_TIMEOUT = 60;
+    private static final int REQUEST_TIMEOUT = 60;
     private static OkHttpClient okHttpClient;
+    @SuppressLint("StaticFieldLeak")
     private static Context mContext;
 
-    private static final String BASE_URL = "https://reseller.netpaisa.com/api/";
+    //private static final String BASE_URL = "https://reseller.netpaisa.com/api/";
+
+    private static final String BASE_URL = "https://www.netpaisa.com/nps/api/";
 
     private static  Gson gson = new GsonBuilder()
             .setLenient()
@@ -71,6 +75,7 @@ public class ApiClientAeps {
                 return chain.proceed(request);
             }
         });
+
         okHttpClient = httpClient.build();
     }
     public static ApiServiceAeps getClientService() { return ApiClientAeps.getClient(mContext).create(ApiServiceAeps.class); }

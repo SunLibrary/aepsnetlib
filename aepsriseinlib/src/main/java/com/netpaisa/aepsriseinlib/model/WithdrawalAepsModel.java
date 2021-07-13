@@ -1,4 +1,3 @@
-/*
 package com.netpaisa.aepsriseinlib.model;
 
 import com.google.gson.annotations.Expose;
@@ -6,45 +5,82 @@ import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
-public class AepsWithdrawalModel implements Serializable {
+public class WithdrawalAepsModel implements Serializable {
 
-    @SerializedName("ERROR_CODE")
+    @SerializedName("ERR_STATE")
     @Expose
-    private long errorCode;
-    @SerializedName("MESSAGE")
+    private long errState;
+    @SerializedName("MSG")
     @Expose
-    private String message;
-    @SerializedName("DATA")
+    private String msg;
+    @SerializedName("RES")
     @Expose
-    private Data data;
+    private Res res;
 
-    public long getErrorCode() {
-        return errorCode;
+    public long getErrState() {
+        return errState;
     }
 
-    public void setErrorCode(long errorCode) {
-        this.errorCode = errorCode;
+    public void setErrState(long errState) {
+        this.errState = errState;
     }
 
-    public String getMessage() {
-        return message;
+    public String getMsg() {
+        return msg;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setMsg(String msg) {
+        this.msg = msg;
     }
 
-    public Data getData() {
-        return data;
+    public Res getRes() {
+        return res;
     }
 
-    public void setData(Data data) {
-        this.data = data;
+    public void setRes(Res res) {
+        this.res = res;
     }
 
-    public static class Data implements Serializable {
-//{"ERROR_CODE":0,"MESSAGE":"Transaction Successful","DATA":{"tran_id":"CIJ012113014403389","amount":"100.00",
-// "amount_txn":100,"balance":7775.6199999999998908606357872486114501953125,"account_no":"9540320399","status":"SUCCESS"}}
+    public static class Res implements Serializable{
+
+        @SerializedName("statuscode")
+        @Expose
+        private String statuscode;
+        @SerializedName("status")
+        @Expose
+        private String status;
+        @SerializedName("data")
+        @Expose
+        private Data data;
+
+        public String getStatuscode() {
+            return statuscode;
+        }
+
+        public void setStatuscode(String statuscode) {
+            this.statuscode = statuscode;
+        }
+
+        public String getStatus() {
+            return status;
+        }
+
+        public void setStatus(String status) {
+            this.status = status;
+        }
+
+        public Data getData() {
+            return data;
+        }
+
+        public void setData(Data data) {
+            this.data = data;
+        }
+
+    }
+
+    public static class Data  implements Serializable{
+
         @SerializedName("tran_id")
         @Expose
         private String tranId;
@@ -113,5 +149,5 @@ public class AepsWithdrawalModel implements Serializable {
         }
 
     }
+
 }
-*/

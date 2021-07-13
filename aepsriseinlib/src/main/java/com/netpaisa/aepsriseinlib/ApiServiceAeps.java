@@ -1,48 +1,44 @@
 package com.netpaisa.aepsriseinlib;
 
-import com.google.gson.JsonObject;
-import com.netpaisa.aepsriseinlib.model.AepsBalanceModel;
-import com.netpaisa.aepsriseinlib.model.AepsGetOTPModel;
-import com.netpaisa.aepsriseinlib.model.AepsInstaBankModel;
-import com.netpaisa.aepsriseinlib.model.AepsMiniStmntModel;
-import com.netpaisa.aepsriseinlib.model.AepsOutletModel;
-import com.netpaisa.aepsriseinlib.model.AepsRegisterModel;
-import com.netpaisa.aepsriseinlib.model.AepsStatusModel;
-import com.netpaisa.aepsriseinlib.model.AepsWithdrawalModel;
 
-import java.util.HashMap;
-import java.util.List;
+import com.netpaisa.aepsriseinlib.model.BalanceAepsModel;
+import com.netpaisa.aepsriseinlib.model.BankListAepsModel;
+import com.netpaisa.aepsriseinlib.model.MiniStmntAepsModel;
+import com.netpaisa.aepsriseinlib.model.WithdrawalAepsModel;
+
 import java.util.Map;
 
 import io.reactivex.Single;
-import okhttp3.MultipartBody;
-import okhttp3.RequestBody;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
-import retrofit2.http.Multipart;
 import retrofit2.http.POST;
-import retrofit2.http.Part;
-import retrofit2.http.PartMap;
 
 public interface ApiServiceAeps {
 
     /*************************AEPS Transaction***********************************/
 
-    @POST("https://pma.netpaisa.in/reseller/api/AEPSSDKV1/banklist.php")
-    @FormUrlEncoded
-    Single<AepsInstaBankModel> getAepsInstaBankList(@FieldMap Map<String, String> param);
+    //@POST("https://pma.netpaisa.in/reseller/api/AEPSSDKV1/banklist.php")
 
-    @POST("AEPSSDKV1/transaction.php")
+    @POST("AEPSMOBSDK/banklist.php")
     @FormUrlEncoded
-    Single<AepsBalanceModel> getAepsInstaBalance(@FieldMap Map<String, String> param);
+    Single<BankListAepsModel> getAepsInstaBankList(@FieldMap Map<String, String> param);
+    //Single<AepsInstaBankModel> getAepsInstaBankList(@FieldMap Map<String, String> param);
 
-    @POST("AEPSSDKV1/transaction.php")
+    //@POST("AEPSSDKV1/transaction.php")
+    @POST("AEPSMOBSDK/transaction.php")
     @FormUrlEncoded
-    Single<AepsWithdrawalModel>  getAepsWithdrawal(@FieldMap Map<String, String> param);
+    Single<BalanceAepsModel> getAepsInstaBalance(@FieldMap Map<String, String> param);
+    //Single<AepsBalanceModel> getAepsInstaBalance(@FieldMap Map<String, String> param);
 
-    @POST("AEPSSDKV1/transaction.php")
+    @POST("AEPSMOBSDK/transaction.php")
     @FormUrlEncoded
-    Single<AepsMiniStmntModel> getAepsMiniStatement(@FieldMap Map<String, String> param);
+    Single<WithdrawalAepsModel>  getAepsWithdrawal(@FieldMap Map<String, String> param);
+    //Single<AepsWithdrawalModel>  getAepsWithdrawal(@FieldMap Map<String, String> param);
+
+    @POST("AEPSMOBSDK/transaction.php")
+    @FormUrlEncoded
+    Single<MiniStmntAepsModel> getAepsMiniStatement(@FieldMap Map<String, String> param);
+    //Single<AepsMiniStmntModel> getAepsMiniStatement(@FieldMap Map<String, String> param);
 
 
     /*************************AEPS KYC***********************************/

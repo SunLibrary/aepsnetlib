@@ -89,9 +89,10 @@ public class MsgConst {
     public static final String SELECT_DEVICE_TYPE = "Please Select Device Type";
     // Field from default config.
     public static final String HEXTOBYTE = "0123456789abcdef";
-    public static final String CHECKSUM_KEY = "0123456789abcdef";
+    //public static final String CHECKSUM_KEY = "0123456789abcdef";
+    public static final String CHECKSUM_KEY = "PackageName=netpaisa.sdk,NETPAISAPASSKEY=snetpaisaSW,x-api-key=skg#@!12#09";
 
     public static final String PID_OPTION_1 = "<PidOptions ver=\"1.0\"> <Opts fCount=\"1\" fType=\"0\" iCount=\"0\" pCount=\"0\" format=\"0\" pidVer=\"2.0\" timeout=\"10000\"  env=\"P\"  /> <CustOpts><Param name=\"mantrakey\" value=\"\" /></CustOpts> </PidOptions>";
     public static final String PID_OPTION_2 = "<PidOptions ver=\"1.0\"><Opts env=\"P\" fCount=\"1\" fType=\"0\" iCount=\"0\" iType=\"\" pCount=\"0\" pType=\"\" format=\"0\" pidVer=\"2.0\" timeout=\"10000\" otp=\"\"  wadh=\"\" posh=\"UNKNOWN\" /><CustOpts><Param name=\"\" value=\"\"/></CustOpts></PidOptions>";
-    public static final String  PID_OPTION_3 = "<PidOptions ver=\"1.0\"> <Opts fCount=\"1\" fType=\"0\" iCount=\"0\" pCount=\"0\" format=\"0\" pidVer=\"2.0\" timeout=\"10000\"  env=\"P\"  /><Demo></Demo> <CustOpts><Param name=\"Param1\" value=\"\" /></CustOpts> </PidOptions>";
+    public static final String PID_OPTION_3 = "<PidOptions ver=\"1.0\"> <Opts fCount=\"1\" fType=\"0\" iCount=\"0\" pCount=\"0\" format=\"0\" pidVer=\"2.0\" timeout=\"10000\"  env=\"P\"  /><Demo></Demo> <CustOpts><Param name=\"Param1\" value=\"\" /></CustOpts> </PidOptions>";
 }

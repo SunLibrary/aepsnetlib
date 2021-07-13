@@ -1,4 +1,3 @@
-/*
 package com.netpaisa.aepsriseinlib.model;
 
 import com.google.gson.annotations.Expose;
@@ -7,32 +6,32 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 import java.util.List;
 
-public class AepsInstaBankModel implements Serializable {
+public class BankListAepsModel implements Serializable{
 
-    @SerializedName("ERROR_CODE")
+    @SerializedName("ERR_STATE")
     @Expose
-    private long errorCode;
-    @SerializedName("MESSAGE")
+    private long errState;
+    @SerializedName("MSG")
     @Expose
-    private String message;
+    private String msg;
     @SerializedName("DATA")
     @Expose
     private List<DATum> data = null;
 
-    public long getErrorCode() {
-        return errorCode;
+    public long getErrState() {
+        return errState;
     }
 
-    public void setErrorCode(long errorCode) {
-        this.errorCode = errorCode;
+    public void setErrState(long errState) {
+        this.errState = errState;
     }
 
-    public String getMessage() {
-        return message;
+    public String getMsg() {
+        return msg;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setMsg(String msg) {
+        this.msg = msg;
     }
 
     public List<DATum> getData() {
@@ -42,6 +41,8 @@ public class AepsInstaBankModel implements Serializable {
     public void setData(List<DATum> data) {
         this.data = data;
     }
+
+
 
 
     public static class DATum implements Serializable {
@@ -68,7 +69,5 @@ public class AepsInstaBankModel implements Serializable {
         public void setBankiin(String bankiin) {
             this.bankiin = bankiin;
         }
-
     }
 }
-*/

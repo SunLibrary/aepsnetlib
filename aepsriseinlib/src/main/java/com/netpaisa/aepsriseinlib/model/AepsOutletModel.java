@@ -1,3 +1,4 @@
+/*
 package com.netpaisa.aepsriseinlib.model;
 
 import com.google.gson.annotations.Expose;
@@ -202,3 +203,4 @@ public class AepsOutletModel implements Serializable {
 
     }
 }
+*/

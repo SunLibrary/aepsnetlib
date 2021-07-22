@@ -2,12 +2,17 @@ package com.netpaisa.aepsriseinlib;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import java.io.IOException;
-import java.util.concurrent.TimeUnit;
+import android.util.Log;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
+
 import org.jetbrains.annotations.NotNull;
+
+import java.io.IOException;
+import java.util.concurrent.TimeUnit;
+
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -72,6 +77,7 @@ public class ApiClientAeps {
                         .addHeader("SourceType", AppConfig.SOURCE_TYPE);
 
                 Request request = requestBuilder.build();
+                Log.e("Request :", request.toString());
                 return chain.proceed(request);
             }
         });

@@ -41,6 +41,7 @@ public interface ApiServiceAeps {
     //Single<AepsMiniStmntModel> getAepsMiniStatement(@FieldMap Map<String, String> param);
 
 
+
     /*************************AEPS KYC***********************************/
 
 //    @POST("aeps/outlet-details.php")

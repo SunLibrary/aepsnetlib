@@ -17,7 +17,7 @@
     <uses-feature android:name="android.hardware.location.network" />
     <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
 
-    <uses-permission
+    <!--<uses-permission
         android:name="android.permission.QUERY_ALL_PACKAGES"
         tools:ignore="QueryAllPackagesPermission" />
 
@@ -25,7 +25,7 @@
         <package android:name="com.scl.rdservice" />
         <package android:name="com.mantra.rdservice" />
         <package android:name="com.acpl.registersdk" />
-    </queries>
+    </queries>-->
 
     <application
         android:usesCleartextTraffic="true"
@@ -35,11 +35,17 @@
             android:name="org.apache.http.legacy"
             android:required="false" />
 
-        <activity android:name=".AepsRiseinActivity"
+        <activity
+            android:name="com.netpaisa.aepsriseinlib.AepsRiseinActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:launchMode="singleInstance"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            android:screenOrientation="portrait">
         </activity>
+
+        <service android:name="com.netpaisa.aepsriseinlib.location.MyService" />
+
+        <receiver android:name="com.netpaisa.aepsriseinlib.location.MyReceiver"
+            tools:ignore="Instantiatable" />
 
          <provider
             android:name="com.netpaisa.aepsriseinlib.CustomFileProvider"

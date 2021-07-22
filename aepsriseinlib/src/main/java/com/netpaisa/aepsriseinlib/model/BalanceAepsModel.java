@@ -6,7 +6,9 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 
 public class BalanceAepsModel implements Serializable {
-
+/*{"ERR_STATE":0,"MSG":"Transaction Successful","RES":{"statuscode":"TNS","status":"Transaction Successful",
+"data":{"tran_id":"DIJ012120018512973","amount":"0.00","amount_txn":0,"balance":"1915.44","account_no":"9540320399","status":"SUCCESS"}}}
+ */
     @SerializedName("ERR_STATE")
     @Expose
     private long errState;

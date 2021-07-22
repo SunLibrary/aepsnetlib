@@ -17,7 +17,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SearchView;
 
-
 import com.netpaisa.aepsriseinlib.R;
 
 import java.io.Serializable;

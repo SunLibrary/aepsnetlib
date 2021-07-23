@@ -39,7 +39,8 @@
             android:name="com.netpaisa.aepsriseinlib.AepsRiseinActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:launchMode="singleInstance"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:label="Aeps One">
         </activity>
 
         <service android:name="com.netpaisa.aepsriseinlib.location.MyService" />

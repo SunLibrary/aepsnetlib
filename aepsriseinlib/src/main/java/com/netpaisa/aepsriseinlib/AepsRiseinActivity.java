@@ -46,7 +46,7 @@ import com.netpaisa.aepsriseinlib.model.WithdrawalAepsModel;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.json.XML;
+//import org.json.XML;
 
 import java.security.SecureRandom;
 import java.util.ArrayList;
@@ -54,7 +54,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Objects;
 import java.util.Random;
-//import fr.arnaudguyon.xmltojsonlib.XmlToJson;
+import fr.arnaudguyon.xmltojsonlib.XmlToJson;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.observers.DisposableSingleObserver;
@@ -64,45 +64,17 @@ import static android.text.Html.fromHtml;
 
 public class AepsRiseinActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private Spinner spinnerTotalFingerCount, spinnerTotalFingerType, spinnerTotalFingerFormat,
-            spinnerEnv;
-    private LinearLayout mAepsMainLayout, linearFingerCount, linearFingerFormat, linearTimeoutPidVer,
-            linearSelectPosition, linearBankName, linearAdharNo, linearAmount, /*activityMain,*/
-            aepsInstaTransLayout, emptyLLayout;
-    private EditText edtxAdharNo, edtxTimeOut, edtxPidVer, edtxMobileNo, edtxAmount;
 
-    private TextView txtSelectPosition, txtOutput, txtDataLabel, /*txBankName,*/
-            txTransType;
+    private LinearLayout mAepsMainLayout, linearAdharNo, linearAmount, aepsInstaTransLayout, emptyLLayout;
+    private EditText edtxAdharNo,  edtxMobileNo, edtxAmount;
 
     private Spinner spnrTransType, spnrDeviceType, bankNameSpinner;
-
-    private Button btnDeviceInfo, btnCapture, mNoGpsBtn, mYesGpsBtn ,btnSubmit, btnCaptureThumb, btnAuthRequest,
-            btnReset;
-
-    private CheckBox chbxUnknown, chbxLeftIndex, chbxLeftMiddle, chbxLeftRing, chbxLeftSmall,
-            chbxLeftThumb, chbxRightIndex,
-            chbxRightMiddle, chbxRightRing, chbxRightSmall, chbxRightThumb;
-
-    private int fingerCount = 0;
-    //private PidData pidData = null;
-    //private Serializer serializer = null;
-
-    private ArrayList<String> positions;
-
-    public String jsonObjCaptured = null;
+    private Button  btnCapture, mNoGpsBtn, mYesGpsBtn ;
     private ApiServiceAeps apiServiceAeps;
-
     private CompositeDisposable disposable = new CompositeDisposable();
 
-    //private List<RecyclerItem> bankList;
-    // private RecyclerItem selectedBank;
-
-    private String mSubmitAadharNo = "", mBankID = "", mSubmitMobileNo = "", mSubmitAmount = "0";
 
     private String mCaptureAadharNo = "", mCaptureBankID = "", mCaptureMobileNo = "", mCaptureAmount = "0";
-    private String sHmac = "", sDpId = "", sRdsId = "", sRdsVer = "", sMi = "", sMc = "", sDc = "", sFCount = "",
-            sFType = "", spType = "", sNmPoints = "", sICount = "", sPCount = "", sErrCode = "", sErrInfo = "", sQScore = "",
-            sPidData = "", sData = "", sPidDataType = "", sPidDataContent = "", sSkey = "", sSkeyCi = "", sSrno = "", sEnv = "P", agent_id = "";
 
     private String selectedTransType = "", mTransType = "", mOutletIdAEPSInsta = "", mPanNoAEPSInsta = "";
 
@@ -116,22 +88,17 @@ public class AepsRiseinActivity extends AppCompatActivity implements View.OnClic
     private int requestCodeMantra = 1;
     private int requestCodeMorpho = 2;
     private int requestCodeStartek = 3;
-    // private int requestCodeAadhaarImg = 5;
     private final int REQUEST_ID_MULTIPLE_PERMISSIONS = 11;
     private final int REQUEST_LOCATION_STORAGE = 200;
 
     private String selectedDeviceType = "", mDeviceType = "";
 
-    //private Uri AEPS_AADHAR_IMAGE;
-    //private ImageView mAadhaarSelectedImg;
 
     //private String mApiAccessKey = "2755870fa87c2aed97skg43fa9e49db1", mOutletId = "16476", mPanNo = "AZRPG6750B", mBiometricData = "";
-    private String mApiAccessKey = "", mOutletId = "", mPanNo = "", mBiometricData = "";
+    private String mApiAccessKey = "", mOutletId = "", mPanNo = "",mAppLabel="", mBiometricData = "";
 
     private List<BankListAepsModel.DATum> bankDataList = new ArrayList(0);
     ArrayList<String> mBankNameList = null;
-    //private GpsTracker gpsTracker;
-
 
     /**************Start*************/
     private GetLocation getLocation = null;
@@ -171,8 +138,8 @@ public class AepsRiseinActivity extends AppCompatActivity implements View.OnClic
     protected void onResume() {
         super.onResume();
         getLocation = new GetLocation(AepsRiseinActivity.this);
-        Log.e("Resume latitude ", this.getLocation.getLatitude() + "");
-        Log.e("Resume longitude ", this.getLocation.getLongitude() + "");
+        //Log.e("Resume latitude ", this.getLocation.getLatitude() + "");
+        //Log.e("Resume longitude ", this.getLocation.getLongitude() + "");
 
         if (this.getLocation.getLatitude() > 0.0D && this.getLocation.getLongitude() > 0.0D) {
             aepsInstaTransLayout = (LinearLayout) findViewById(R.id.aepsInstaTransLayout);
@@ -180,9 +147,8 @@ public class AepsRiseinActivity extends AppCompatActivity implements View.OnClic
             emptyLLayout = (LinearLayout) findViewById(R.id.emptyLLayout);
             emptyLLayout.setVisibility(View.GONE);
             if (mBankNameList==null) {
-                //loadBankList();
                 initView();
-                Log.e("Resume Bank Name Size ", mBankNameList + "");
+                //Log.e("Resume Bank Name Size ", mBankNameList + "");
             }
         } else if (this.getLocation.getLatitude() == 0.0D && this.getLocation.getLongitude() == 0.0D) {
             if (!this.getLocation.isGPSEnabled) {
@@ -190,8 +156,7 @@ public class AepsRiseinActivity extends AppCompatActivity implements View.OnClic
                 aepsInstaTransLayout.setVisibility(View.GONE);
                 emptyLLayout = (LinearLayout) findViewById(R.id.emptyLLayout);
                 emptyLLayout.setVisibility(View.VISIBLE);
-                //this.getLocation.showSettingsAlert();
-                 //showSettingsAlert();
+
             }
         }
 
@@ -200,8 +165,6 @@ public class AepsRiseinActivity extends AppCompatActivity implements View.OnClic
             aepsInstaTransLayout.setVisibility(View.GONE);
             emptyLLayout = (LinearLayout) findViewById(R.id.emptyLLayout);
             emptyLLayout.setVisibility(View.VISIBLE);
-           // this.getLocation.showSettingsAlert();
-             //showSettingsAlert();
         }
 
 
@@ -224,13 +187,9 @@ public class AepsRiseinActivity extends AppCompatActivity implements View.OnClic
             Toast.makeText(AepsRiseinActivity.this, "Please check Network, Internet seems to be weak! ", Toast.LENGTH_SHORT).show();
         }
 
-       /* else if (this.getLocation.getLatitude() > 0.0 && this.getLocation.getLongitude() > 0.0) {
-            initView();
-        }*/
 
-
-        Log.e("latitude ", this.getLocation.getLatitude() + "");
-        Log.e("longitude ", this.getLocation.getLongitude() + "");
+       // Log.e("latitude ", this.getLocation.getLatitude() + "");
+       // Log.e("longitude ", this.getLocation.getLongitude() + "");
 
     }
 
@@ -242,20 +201,13 @@ public class AepsRiseinActivity extends AppCompatActivity implements View.OnClic
         if (mIntent != null) {
 
             mApiAccessKey = mIntent.getStringExtra("api_access_key");
-           /* if (mApiAccessKey.isEmpty()) {
-            }*/
             mOutletId = mIntent.getStringExtra("outletid");
-            /*  if (mOutletId.isEmpty()) {
-            }*/
             mPanNo = mIntent.getStringExtra("pan_no");
-            /*if (mPanNo.isEmpty()) {
-            }*/
-            int mPrimaryColor = mIntent.getIntExtra("primary_color", MyUtils.PRIMARY_COLOR);
-            MyUtils.PRIMARY_COLOR = mPrimaryColor;
-            int mAccentColor = mIntent.getIntExtra("accent_color", MyUtils.ACCENT_COLOR);
-            MyUtils.ACCENT_COLOR = mAccentColor;
-            int mPrimaryDarkColor = mIntent.getIntExtra("primary_dark_color", MyUtils.PRIMARY_DARK_COLOR);
-            MyUtils.PRIMARY_DARK_COLOR = mPrimaryDarkColor;
+            mAppLabel = mIntent.getStringExtra("app_label");
+            Objects.requireNonNull(getSupportActionBar()).setTitle(mAppLabel);
+            MyUtils.PRIMARY_DARK_COLOR = mIntent.getIntExtra("primary_dark_color", MyUtils.PRIMARY_DARK_COLOR);
+            MyUtils.PRIMARY_COLOR = mIntent.getIntExtra("primary_color", MyUtils.PRIMARY_COLOR);
+            MyUtils.ACCENT_COLOR = mIntent.getIntExtra("accent_color", MyUtils.ACCENT_COLOR);
 
         }
 
@@ -271,26 +223,9 @@ public class AepsRiseinActivity extends AppCompatActivity implements View.OnClic
             emptyLLayout.setVisibility(View.VISIBLE);
         }
 
-//        else if (this.getLocation.getLatitude() > 0.0 && this.getLocation.getLongitude() > 0.0) {
-//            aepsInstaTransLayout = (LinearLayout) findViewById(R.id.aepsInstaTransLayout);
-//            aepsInstaTransLayout.setVisibility(View.VISIBLE);
-//            emptyLLayout = (LinearLayout) findViewById(R.id.emptyLLayout);
-//            emptyLLayout.setVisibility(View.GONE);
-//        }
-//        else if (this.getLocation.getLatitude() == 0.0 && this.getLocation.getLongitude() == 0.0) {
-//            aepsInstaTransLayout = (LinearLayout) findViewById(R.id.aepsInstaTransLayout);
-//            aepsInstaTransLayout.setVisibility(View.GONE);
-//            emptyLLayout = (LinearLayout) findViewById(R.id.emptyLLayout);
-//            emptyLLayout.setVisibility(View.VISIBLE);
-//        }
-
-
         linearAdharNo = (LinearLayout) findViewById(R.id.linearAdharNo);
         linearAdharNo.setVisibility(View.VISIBLE);
 
-        //activityMain = (LinearLayout) findViewById(R.id.activity_main);
-        //txBankName = (TextView) findViewById(R.id.txBankName);
-        // txBankName.setOnClickListener(this);
 
         edtxAdharNo = (EditText) findViewById(R.id.edtxAdharNo);
         edtxMobileNo = (EditText) findViewById(R.id.edtxMobileNo);
@@ -305,13 +240,8 @@ public class AepsRiseinActivity extends AppCompatActivity implements View.OnClic
         mYesGpsBtn = (Button) findViewById(R.id.idYesGpsBtn);
         mYesGpsBtn.setOnClickListener(this);
 
-        //linearBankName = (LinearLayout) findViewById(R.id.linearBankName);
-        //linearBankName.setOnClickListener(this);
-        bankNameSpinner = (Spinner) findViewById(R.id.bank_name_spinner);
-//        if (mBankNameList==null) {
-//            loadBankList();
-//        }
 
+        bankNameSpinner = (Spinner) findViewById(R.id.bank_name_spinner);
 
         bankNameSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -399,57 +329,10 @@ public class AepsRiseinActivity extends AppCompatActivity implements View.OnClic
 
         loadBankList();
 
-//        LinkedHashMap<String, String> paramsCaptured = new LinkedHashMap<>();
-//        paramsCaptured.put("api_access_key", "2755870fa87c2aed97skg43fa9e49db1");
-//        paramsCaptured.put("mobile", "9540320399");
-//        paramsCaptured.put("name", "Surya Prakash Bhati");
-//// paramsCaptured.put("outletid", mOutletId);
-//// paramsCaptured.put("pan_no", mPanNo);
-//// paramsCaptured.put("latitude", "28.535517");
-//// paramsCaptured.put("longitude", "77.391029");
-//// paramsCaptured.put("bankiin", bankiIn);
-//// paramsCaptured.put("aadhaar_uid", aadhaarUID);
-//// paramsCaptured.put("mobile", mobileNo);
-//// paramsCaptured.put("trans_type", transType);
-//// paramsCaptured.put("amount", submitAmount);
-//
-//        Log.e("Checksum String", MyUtils.formatQueryParams(paramsCaptured));
-//        String myChecksum = MyUtils.generateHashWithHmac256(MyUtils.formatQueryParams(paramsCaptured), MsgConst.CHECKSUM_KEY);
-//        //paramsCaptured.put("checksum", myChecksum);
-//        Log.e("NewChecksum", myChecksum);
-
-//        try {
-//            if (ContextCompat.checkSelfPermission(getApplicationContext(), android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED ) {
-//
-//                ActivityCompat.requestPermissions(AepsRiseinActivity.this, new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION}, 101);
-//
-//            }else {
-//                //getLocation();
-//            }
-//
-//        } catch (Exception e){
-//            e.printStackTrace();
-//        }
-
         Log.e("init latitude ", this.getLocation.getLatitude() + "");
         Log.e("init longitude ", this.getLocation.getLongitude() + "");
 
     }
-
-
-//    public void getLocation( ){
-//        gpsTracker = new GpsTracker(getApplicationContext());
-//        if(gpsTracker.canGetLocation()){
-//            double latitude = gpsTracker.getLatitude();
-//            double longitude = gpsTracker.getLongitude();
-//            Log.e("Latitude Tracker ",String.valueOf(latitude));
-//            Log.e("Longitude Tracker ",String.valueOf(longitude));
-//            Log.e("latitude ", this.getLocation.getLatitude() + "");
-//            Log.e("longitude ", this.getLocation.getLongitude() + "");
-//        }else{
-//            gpsTracker.showSettingsAlert();
-//        }
-    //   }
 
 
     private boolean checkPermission() {
@@ -496,24 +379,18 @@ public class AepsRiseinActivity extends AppCompatActivity implements View.OnClic
                     boolean locFineAccepted = grantResults[3] == 0;
                     if (locationAccepted && readAccepted && writeAccepted && locFineAccepted) {
                         initView();
-//                        if(mBankNameList==null) {
-//                            loadBankList();
-//                        }
+
                         Snackbar.make(mAepsMainLayout, "Permission Granted, Now you can access location data and Write data.", Snackbar.LENGTH_LONG).show();
                     } else {
                         initView();
-//                        if(mBankNameList==null) {
-//                            loadBankList();
-//                        }
+
                         Snackbar.make(mAepsMainLayout, "Permission Denied, You cannot access location data and Write data.", Snackbar.LENGTH_LONG).show();
                         if (Build.VERSION.SDK_INT >= 23 && this.shouldShowRequestPermissionRationale("android.permission.ACCESS_FINE_LOCATION")) {
                             this.showMessageOKCancel("You need to allow access to all the permissions", new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int which) {
                                     if (Build.VERSION.SDK_INT >= 23) {
                                         initView();
-//                                        if(mBankNameList==null) {
-//                                            loadBankList();
-//                                        }
+
                                         AepsRiseinActivity.this.requestPermissions(new String[]{"android.permission.ACCESS_FINE_LOCATION", "android.permission.WRITE_EXTERNAL_STORAGE",
                                                 "android.permission.ACCESS_COARSE_LOCATION", "android.permission.READ_EXTERNAL_STORAGE"}, REQUEST_LOCATION_STORAGE);
                                     }
@@ -529,9 +406,6 @@ public class AepsRiseinActivity extends AppCompatActivity implements View.OnClic
 
     private void showMessageOKCancel(String message, DialogInterface.OnClickListener okListener) {
         initView();
-//        if(mBankNameList==null) {
-//            loadBankList();
-//        }
         (new AlertDialog.Builder(AepsRiseinActivity.this)).setMessage(message).setPositiveButton("OK", okListener).setNegativeButton("Cancel", (DialogInterface.OnClickListener) null).create().show();
     }
 
@@ -564,20 +438,6 @@ public class AepsRiseinActivity extends AppCompatActivity implements View.OnClic
             AepsRiseinActivity.this.startActivity(intent);
         }
         if (mView.getId() == R.id.btnCapture) {
-
-//            if (!this.networkCheck.isInternetAvailable()) {
-//                Toast.makeText(AepsRiseinActivity.this, "Please check, Network is not available", Toast.LENGTH_SHORT).show();
-//            } else if (!this.checkPermission()) {
-//                this.requestPermission();
-//            } else if (!this.getLocation.isGPSEnabled) {
-//                this.getLocation.showSettingsAlert();
-//            } else if (this.getLocation.getLatitude() > 0.0D && this.getLocation.getLongitude() > 0.0D) {
-//                //Toast.makeText(AepsRiseinActivity.this, "Sorry, Unable To fetch Location, Please Enable GPS Location in Mobile Setting.", Toast.LENGTH_SHORT).show();
-//            } else {
-//                Toast.makeText(AepsRiseinActivity.this, "Please check Network, Internet seems to be weak! ", Toast.LENGTH_SHORT).show();
-//            }
-            //if (!MyUtils.isConnected(Objects.requireNonNull(AepsRiseinActivity.this))) {
-
 
             if (!this.networkCheck.isInternetAvailable()) {
                 MyDialog.errorDialog(AepsRiseinActivity.this, "Please check, Network is not available.");
@@ -1214,10 +1074,10 @@ public class AepsRiseinActivity extends AppCompatActivity implements View.OnClic
                                 JSONObject jsonObj = null;
                                 try {
                                     try {
-                                         jsonObj = XML.toJSONObject(resultPidData);
-                                        // XmlToJson xmlToJson = new XmlToJson.Builder(resultPidData).build();
+                                        // jsonObj = XML.toJSONObject(resultPidData);
+                                          XmlToJson xmlToJson = new XmlToJson.Builder(resultPidData).build();
                                         // convert to a JSONObject
-                                        // jsonObj = xmlToJson.toJson();
+                                          jsonObj = xmlToJson.toJson();
                                     } catch (Exception ex) {
                                         ex.printStackTrace();
                                     }
@@ -1227,7 +1087,7 @@ public class AepsRiseinActivity extends AppCompatActivity implements View.OnClic
                                     JSONObject mrRespObject = mrPidDataObject.getJSONObject("Resp");
 
                                     String mErrCode = mrRespObject.getString("errCode");
-                                    sErrCode = mErrCode;
+                                    //sErrCode = mErrCode;
 
                                     String mErrInfo = "";
                                     if (mErrCode.equalsIgnoreCase("0")) {
@@ -1236,7 +1096,7 @@ public class AepsRiseinActivity extends AppCompatActivity implements View.OnClic
                                     } else {
                                         mErrInfo = mrRespObject.getString("errInfo");
                                     }
-                                    sErrInfo = mErrInfo;
+                                    //sErrInfo = mErrInfo;
 
                                     if (mErrCode.equalsIgnoreCase("0")) {
                                         dialogAadhaarCaptureStatus("Capture Success");
@@ -1275,10 +1135,10 @@ public class AepsRiseinActivity extends AppCompatActivity implements View.OnClic
                                 JSONObject jsonObj = null;
                                 try {
                                     try {
-                                         jsonObj = XML.toJSONObject(resultPidData);
-                                         //XmlToJson xmlToJson = new XmlToJson.Builder(resultPidData).build();
+                                         //jsonObj = XML.toJSONObject(resultPidData);
+                                          XmlToJson xmlToJson = new XmlToJson.Builder(resultPidData).build();
                                         // convert to a JSONObject
-                                         //jsonObj = xmlToJson.toJson();
+                                          jsonObj = xmlToJson.toJson();
                                     } catch (Exception ex) {
                                         ex.printStackTrace();
                                     }
@@ -1288,7 +1148,7 @@ public class AepsRiseinActivity extends AppCompatActivity implements View.OnClic
                                     JSONObject mrRespObject = mrPidDataObject.getJSONObject("Resp");
 
                                     String mErrCode = mrRespObject.getString("errCode");
-                                    sErrCode = mErrCode;
+                                    //sErrCode = mErrCode;
 
                                     String mErrInfo = "";
                                     if (mErrCode.equalsIgnoreCase("0")) {
@@ -1297,7 +1157,7 @@ public class AepsRiseinActivity extends AppCompatActivity implements View.OnClic
                                     } else {
                                         mErrInfo = mrRespObject.getString("errInfo");
                                     }
-                                    sErrInfo = mErrInfo;
+                                    //sErrInfo = mErrInfo;
 
                                     if (mErrCode.equalsIgnoreCase("0")) {
                                         dialogAadhaarCaptureStatus("Capture Success");
@@ -1337,10 +1197,10 @@ public class AepsRiseinActivity extends AppCompatActivity implements View.OnClic
                                 JSONObject jsonObj = null;
                                 try {
                                     try {
-                                         jsonObj = XML.toJSONObject(resultPidData);
-                                         //XmlToJson xmlToJson = new XmlToJson.Builder(resultPidData).build();
+                                         //jsonObj = XML.toJSONObject(resultPidData);
+                                          XmlToJson xmlToJson = new XmlToJson.Builder(resultPidData).build();
                                         // convert to a JSONObject
-                                         //jsonObj = xmlToJson.toJson();
+                                        jsonObj = xmlToJson.toJson();
                                     } catch (Exception ex) {
                                         ex.printStackTrace();
                                     }
@@ -1350,7 +1210,7 @@ public class AepsRiseinActivity extends AppCompatActivity implements View.OnClic
                                     JSONObject mrRespObject = mrPidDataObject.getJSONObject("Resp");
 
                                     String mErrCode = mrRespObject.getString("errCode");
-                                    sErrCode = mErrCode;
+                                    //sErrCode = mErrCode;
 
                                     String mErrInfo = "";
                                     if (mErrCode.equalsIgnoreCase("0")) {
@@ -1359,75 +1219,10 @@ public class AepsRiseinActivity extends AppCompatActivity implements View.OnClic
                                     } else {
                                         mErrInfo = mrRespObject.getString("errInfo");
                                     }
-                                    sErrInfo = mErrInfo;
-
-                                    if (mErrCode.equalsIgnoreCase("0")) {
-                                        dialogAadhaarCaptureStatus("Capture Success");
-                                    } else if (!mErrInfo.isEmpty() && mErrInfo.equalsIgnoreCase("SafetyNet Integrity not passed so please refresh RD Service manually.")) {
-                                        dialogAadhaarCaptureStatus("Device not ready.");
-                                    } else if (!mErrInfo.isEmpty() && mErrInfo.equalsIgnoreCase("Device not ready")) {
-                                        dialogAadhaarCaptureStatus(mErrInfo + "");
-                                    } else {
-                                        dialogAadhaarCaptureStatus("Device not ready.");
-                                        return;
-                                    }
-
-                                } catch (JSONException var10) {
-                                    MyDialog.errorDialog(AepsRiseinActivity.this, var10.getMessage());
-                                }
-                            }
-                        }
-                    } catch (Exception e) {
-                        Log.e("Error", "Error while deserialze pid data", e);
-                    }
-                }
-                break;
-
-
-            case 4:
-                if (resultCode == Activity.RESULT_OK) {
-                    try {
-                        if (data != null) {
-
-                            Bundle strBundle = data.getExtras();
-                            if (strBundle != null) {
-                                String resultPidData = strBundle.getString("PID_DATA"); // in this varaible you will get Pid data
-                                Log.e("BiometricData 4", resultPidData);
-                                mBiometricData = resultPidData;
-                                JSONObject jsonObj = null;
-                                try {
-                                    try {
-                                         jsonObj = XML.toJSONObject(resultPidData);
-                                         // XmlToJson xmlToJson = new XmlToJson.Builder(resultPidData).build();
-                                        // convert to a JSONObject
-                                         // jsonObj = xmlToJson.toJson();
-                                    } catch (Exception ex) {
-                                        ex.printStackTrace();
-                                    }
-
-                                    //Log.e("CapturedJSONstr", jsonObj.toString());
-
-                                    JSONObject strPidDataObject = jsonObj.getJSONObject("PidData");
-                                    //sPidData = strPidDataObject.toString();
-                                    //Log.e("PidData", strPidDataObject.toString());
-                                    JSONObject strRespObject = strPidDataObject.getJSONObject("Resp");
-
-                                    String mErrCode = strRespObject.getString("errCode");
-                                    //sErrCode = mErrCode;
-
-                                    String mErrInfo = "";
-                                    if (mErrCode.equalsIgnoreCase("0")) {
-                                        mErrInfo = "Capture Success";
-
-                                    } else {
-                                        mErrInfo = strRespObject.getString("errInfo");
-                                    }
                                     //sErrInfo = mErrInfo;
 
                                     if (mErrCode.equalsIgnoreCase("0")) {
-
                                         dialogAadhaarCaptureStatus("Capture Success");
-
                                     } else if (!mErrInfo.isEmpty() && mErrInfo.equalsIgnoreCase("SafetyNet Integrity not passed so please refresh RD Service manually.")) {
                                         dialogAadhaarCaptureStatus("Device not ready.");
                                     } else if (!mErrInfo.isEmpty() && mErrInfo.equalsIgnoreCase("Device not ready")) {
@@ -1447,6 +1242,9 @@ public class AepsRiseinActivity extends AppCompatActivity implements View.OnClic
                     }
                 }
                 break;
+
+
+
 
         }
     }

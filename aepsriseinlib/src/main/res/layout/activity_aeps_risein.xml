@@ -73,7 +73,7 @@
                             android:id="@+id/bank_name_spinner"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:gravity="left"
+                            android:gravity="center"
                             android:paddingLeft="@dimen/_5sdp"
                             app:hintText="@string/select_bank_name" />
 

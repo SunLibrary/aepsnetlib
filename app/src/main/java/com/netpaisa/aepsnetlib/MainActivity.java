@@ -9,7 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
-import com.netpaisa.aepsriseinlib.AepsRiseinActivity;
+//import com.netpaisa.aepsriseinlib.AepsRiseinActivity;
 
 //import org.json.JSONObject;
 //import org.json.XML;
@@ -53,7 +53,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             case R.id.idGoToAEPS:
 
-
 //                Intent intentTrans = new Intent(MainActivity.this, AepsRiseinActivity.class);
 //                intentTrans.putExtra("api_access_key", "2755870fa87c2aed97skg43fa9e49db1");
 //                intentTrans.putExtra("outletid", "16476");
@@ -64,7 +63,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //                intentTrans.putExtra("primary_dark_color", R.color.colorPrimaryDark);
 //                intentTrans.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 //                startActivity(intentTrans);
-
                 break;
         }
     }

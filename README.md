@@ -23,11 +23,13 @@ allprojects {
             } 
 
 
-Step 2. In App Gradle Add Dependencies
+Step 2. In App Gradle Add Dependencies 
 
 Note: Make sure you migrated your android app to Android X 
 
 dependencies { 
+   
+    implementation 'com.google.code.gson:gson:2.8.6'
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'androidx.recyclerview:recyclerview:1.2.1'
     implementation 'io.reactivex.rxjava2:rxjava:2.2.11'
@@ -39,7 +41,6 @@ dependencies {
     implementation 'com.squareup.okhttp3:logging-interceptor:4.9.0'
     implementation 'org.jsoup:jsoup:1.10.2'
 
-    implementation 'com.google.code.gson:gson:2.8.6'
 
     implementation 'com.intuit.sdp:sdp-android:1.0.6'
     implementation 'com.intuit.ssp:ssp-android:1.0.6'
@@ -52,27 +53,28 @@ dependencies {
 
  
 
-5). Transaction Intent for Balance Enquiry, Cash withdrawal, Mini statement and Aadhaar Pay :
+5). Transaction Intent for Balance Enquiry, Cash withdrawal, Mini statement and Aadhaar Pay : 
 
-Intent intentTrans = new Intent(MainActivity.this, AepsRiseinActivity.class);
-intentTrans.putExtra("api_access_key", " "); 
+Intent intentTrans = new Intent(MainActivity.this, AepsRiseinActivity.class); 
+
+intentTrans.putExtra("api_access_key", " ");  
 //Provided by NetPaisa Team
-intentTrans.putExtra("outletid", " ");
+intentTrans.putExtra("outletid", " "); 
 //Provided by NetPaisa Team
-intentTrans.putExtra("pan_no", " ");
+intentTrans.putExtra("pan_no", " "); 
 //Provided by NetPaisa Team
 
 
-intentTrans.putExtra("app_label", "xxxxxxxxx");
+intentTrans.putExtra("app_label", "xxxxxxxxx"); 
 //User Input
-intentTrans.putExtra("primary_color", R.color.colorPrimary) 
+intentTrans.putExtra("primary_color", R.color.colorPrimary)  
 //User Input;
-intentTrans.putExtra("accent_color", R.color.colorAccent); 
+intentTrans.putExtra("accent_color", R.color.colorAccent);  
 //User Input
-intentTrans.putExtra("primary_dark_color", R.color.colorPrimaryDark); 
+intentTrans.putExtra("primary_dark_color", R.color.colorPrimaryDark);  
 //User Input
-intentTrans.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-startActivity(intentTrans);
+intentTrans.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); 
+startActivity(intentTrans); 
  
  
 

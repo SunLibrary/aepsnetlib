@@ -7,6 +7,7 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -65,15 +66,15 @@ import static android.text.Html.fromHtml;
 public class AepsRiseinActivity extends AppCompatActivity implements View.OnClickListener {
 
 
-    private LinearLayout mAepsMainLayout, linearAdharNo, linearAmount, aepsInstaTransLayout, emptyLLayout;
+    private LinearLayout mAepsMainLayout, mToolbarLayout, mBackLLayout, linearAdharNo, linearAmount, aepsInstaTransLayout, emptyLLayout;
     private EditText edtxAdharNo,  edtxMobileNo, edtxAmount;
 
     private Spinner spnrTransType, spnrDeviceType, bankNameSpinner;
     private Button  btnCapture, mNoGpsBtn, mYesGpsBtn ;
     private ApiServiceAeps apiServiceAeps;
-    private CompositeDisposable disposable = new CompositeDisposable();
+    private final CompositeDisposable disposable = new CompositeDisposable();
 
-
+    private  TextView mTitleText ;
     private String mCaptureAadharNo = "", mCaptureBankID = "", mCaptureMobileNo = "", mCaptureAmount = "0";
 
     private String selectedTransType = "", mTransType = "", mOutletIdAEPSInsta = "", mPanNoAEPSInsta = "";
@@ -98,7 +99,7 @@ public class AepsRiseinActivity extends AppCompatActivity implements View.OnClic
     private String mApiAccessKey = "", mOutletId = "", mPanNo = "",mAppLabel="", mBiometricData = "";
 
     private List<BankListAepsModel.DATum> bankDataList = new ArrayList(0);
-    ArrayList<String> mBankNameList = null;
+    private ArrayList<String> mBankNameList = null;
 
     /**************Start*************/
     private GetLocation getLocation = null;
@@ -112,13 +113,13 @@ public class AepsRiseinActivity extends AppCompatActivity implements View.OnClic
 
         setContentView(R.layout.activity_aeps_risein);
 
-        Toolbar toolbar = findViewById(R.id.toolbarAeps);
-        setSupportActionBar(toolbar);
-
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getSupportActionBar().setDisplayShowTitleEnabled(true);
-        }
+//        Toolbar toolbar = findViewById(R.id.toolbarAeps);
+//        setSupportActionBar(toolbar);
+//
+//        if (getSupportActionBar() != null) {
+//            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//            getSupportActionBar().setDisplayShowTitleEnabled(true);
+//        }
 
         mAepsMainLayout = (LinearLayout) findViewById(R.id.idAepsMainLayout);
         if (apiServiceAeps == null) {
@@ -195,6 +196,12 @@ public class AepsRiseinActivity extends AppCompatActivity implements View.OnClic
 
 
     private void initView() {
+
+        mToolbarLayout = (LinearLayout) findViewById(R.id.idAepsToolbarLayout);
+        mBackLLayout = (LinearLayout) findViewById(R.id.idBackLLayout);
+        mBackLLayout.setOnClickListener(this);
+        mTitleText = (TextView) findViewById(R.id.idTitleText);
+
         mBankNameList = new ArrayList();
 
         Intent mIntent = this.getIntent();
@@ -204,9 +211,12 @@ public class AepsRiseinActivity extends AppCompatActivity implements View.OnClic
             mOutletId = mIntent.getStringExtra("outletid");
             mPanNo = mIntent.getStringExtra("pan_no");
             mAppLabel = mIntent.getStringExtra("app_label");
-            Objects.requireNonNull(getSupportActionBar()).setTitle(mAppLabel);
+            mTitleText.setText(mAppLabel);
+            //Objects.requireNonNull(getSupportActionBar()).setTitle(mAppLabel);
             MyUtils.PRIMARY_DARK_COLOR = mIntent.getIntExtra("primary_dark_color", MyUtils.PRIMARY_DARK_COLOR);
             MyUtils.PRIMARY_COLOR = mIntent.getIntExtra("primary_color", MyUtils.PRIMARY_COLOR);
+            mToolbarLayout.setBackgroundColor(MyUtils.PRIMARY_COLOR);
+            //getSupportActionBar().setBackgroundDrawable(new ColorDrawable(MyUtils.PRIMARY_COLOR));
             MyUtils.ACCENT_COLOR = mIntent.getIntExtra("accent_color", MyUtils.ACCENT_COLOR);
 
         }
@@ -222,6 +232,7 @@ public class AepsRiseinActivity extends AppCompatActivity implements View.OnClic
             emptyLLayout = (LinearLayout) findViewById(R.id.emptyLLayout);
             emptyLLayout.setVisibility(View.VISIBLE);
         }
+
 
         linearAdharNo = (LinearLayout) findViewById(R.id.linearAdharNo);
         linearAdharNo.setVisibility(View.VISIBLE);
@@ -426,6 +437,9 @@ public class AepsRiseinActivity extends AppCompatActivity implements View.OnClic
     @Override
     public void onClick(View mView) {
 
+        if (mView.getId() == R.id.idBackLLayout) {
+            onBackPressed();
+        }
 
         if (mView.getId() == R.id.idNoGpsBtn) {
             initView();

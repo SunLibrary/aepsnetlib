@@ -8,6 +8,7 @@
     android:orientation="vertical"
     android:id="@+id/idAepsMainLayout">
 
+<!--
 
      <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbarAeps"
@@ -22,8 +23,43 @@
             android:background="@color/colorPrimary" />
 
     </com.google.android.material.appbar.AppBarLayout>
+-->
 
+    <LinearLayout
+        android:id="@+id/idAepsToolbarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40ssp"
+        android:weightSum="10"
+        android:orientation="horizontal"
+        android:background="@color/color_blue"
+        >
 
+        <LinearLayout
+            android:id="@+id/idBackLLayout"
+            android:layout_width="0dp"
+            android:layout_weight="1.5"
+            android:layout_height="match_parent"
+            >
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_back_arrow"
+                android:scaleType="center"
+                android:layout_gravity="left|center"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/idTitleText"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="8.5"
+            android:text="Aeps "
+            android:paddingLeft="@dimen/_10sdp"
+            android:textColor="@color/white"
+            android:gravity="left|center"
+            android:textSize="@dimen/_16sdp"/>
+
+    </LinearLayout>
 
 
     <LinearLayout
